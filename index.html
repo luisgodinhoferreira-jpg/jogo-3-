@@ -485,7 +485,6 @@
             pointer-events: auto;
         }
 
-        /* ===== ANALOG ESQUERDO ===== */
         .xtrap-analog {
             width: 110px;
             height: 110px;
@@ -565,7 +564,6 @@
             pointer-events: none;
         }
 
-        /* ===== BOTÕES XTRAP ===== */
         .xtrap-buttons {
             display: flex;
             flex-direction: column;
@@ -620,7 +618,6 @@
             letter-spacing: 1px;
         }
 
-        /* Botões coloridos estilo XTRAP */
         .xtrap-buttons .btn-xtrap.a {
             border-color: rgba(50, 200, 50, 0.15);
             color: #6bff6b;
@@ -657,7 +654,6 @@
             border-color: rgba(255, 200, 50, 0.3);
         }
 
-        /* Botões de ombro */
         .xtrap-buttons .btn-xtrap.shoulder {
             width: 40px;
             height: 40px;
@@ -680,7 +676,6 @@
             color: #cccc88;
         }
 
-        /* Botões SELECT, START, MODE */
         .xtrap-buttons .btn-xtrap.special {
             width: 36px;
             height: 36px;
@@ -720,7 +715,6 @@
             box-shadow: 0 0 50px rgba(255, 50, 50, 0.1);
         }
 
-        /* ===== INDICADOR GAMEPAD ===== */
         #gamepad-status {
             position: fixed;
             bottom: 80px;
@@ -979,7 +973,6 @@
 
     <!-- ===== CONTROLE XTRAP ===== -->
     <div id="mobile-controls" style="display:none;">
-        <!-- ANALOG ESQUERDO -->
         <div class="xtrap-analog" id="joypadContainer">
             <div class="analog-bg"></div>
             <div class="analog-ring"></div>
@@ -988,30 +981,22 @@
             <div class="analog-label">L3</div>
         </div>
 
-        <!-- BOTÕES XTRAP -->
         <div class="xtrap-buttons">
-            <!-- Linha L1 / R1 -->
             <div class="xtrap-row">
                 <button class="btn-xtrap shoulder l1" id="btnL1">L1</button>
                 <button class="btn-xtrap shoulder r1" id="btnR1">R1</button>
             </div>
-
-            <!-- Linha SELECT / START / MODE -->
             <div class="xtrap-row">
                 <button class="btn-xtrap special select" id="btnSelect">SEL</button>
                 <button class="btn-xtrap special start" id="btnStart">STA</button>
                 <button class="btn-xtrap special mode" id="btnMode">MOD</button>
             </div>
-
-            <!-- Linha Y / X / A / B -->
             <div class="xtrap-row">
                 <button class="btn-xtrap y" id="btnY">Y</button>
                 <button class="btn-xtrap x" id="btnX">X</button>
                 <button class="btn-xtrap a" id="btnA">A</button>
                 <button class="btn-xtrap b" id="btnB">B</button>
             </div>
-
-            <!-- Linha L2 / Tiro / R2 -->
             <div class="xtrap-row">
                 <button class="btn-xtrap shoulder" id="btnL2" style="border-color:rgba(100,200,200,0.1);color:#88cccc;">L2</button>
                 <button class="btn-xtrap shoot" id="btnShoot">🔫</button>
@@ -1030,7 +1015,7 @@
         // ============================================================
         //  SISTEMA DE LOGIN / CADASTRO
         // ============================================================
-        const PLAYERS_KEY = 'pitfall_players_2d_v10';
+        const PLAYERS_KEY = 'pitfall_players_2d_v11';
         let currentPlayer = null;
 
         const SHOP_ITEMS = [
@@ -1342,7 +1327,7 @@
         };
 
         // ============================================================
-        //  BIOMAS
+        //  BIOMAS (SIMPLIFICADO)
         // ============================================================
         const BIOMAS = [{
             name: '🌲 Floresta',
@@ -1352,8 +1337,7 @@
             ground2: '#2a5a2a',
             wall: '#3a2a1a',
             tree: '#2a6a2a',
-            grass: '#3a6a3a',
-            cloud: 'rgba(255,255,255,0.03)'
+            grass: '#3a6a3a'
         }, {
             name: '🏜️ Deserto',
             sky: '#4a3a2a',
@@ -1362,8 +1346,7 @@
             ground2: '#9a8a5a',
             wall: '#6a5a3a',
             tree: '#8a6a3a',
-            grass: '#aa8844',
-            cloud: 'rgba(255,200,150,0.04)'
+            grass: '#aa8844'
         }, {
             name: '❄️ Tundra',
             sky: '#3a4a6a',
@@ -1372,8 +1355,7 @@
             ground2: '#5a6a8a',
             wall: '#3a4a5a',
             tree: '#5a7a8a',
-            grass: '#6a8a9a',
-            cloud: 'rgba(255,255,255,0.05)'
+            grass: '#6a8a9a'
         }, {
             name: '🌿 Pântano',
             sky: '#0d1a0d',
@@ -1382,8 +1364,7 @@
             ground2: '#2a4a3a',
             wall: '#2a1a1a',
             tree: '#2a5a3a',
-            grass: '#3a6a4a',
-            cloud: 'rgba(100,200,100,0.02)'
+            grass: '#3a6a4a'
         }, {
             name: '🕯️ Caverna',
             sky: '#0a0a0a',
@@ -1392,8 +1373,7 @@
             ground2: '#3a3a3a',
             wall: '#1a1a1a',
             tree: '#3a3a2a',
-            grass: '#4a4a3a',
-            cloud: 'rgba(255,200,100,0.02)'
+            grass: '#4a4a3a'
         }, {
             name: '🏖️ Praia',
             sky: '#4a6a8a',
@@ -1402,8 +1382,7 @@
             ground2: '#9a9a7a',
             wall: '#6a5a4a',
             tree: '#6a8a5a',
-            grass: '#8aaa6a',
-            cloud: 'rgba(255,255,255,0.06)'
+            grass: '#8aaa6a'
         }, {
             name: '⛰️ Montanha',
             sky: '#4a5a7a',
@@ -1412,8 +1391,7 @@
             ground2: '#6a6a7a',
             wall: '#4a4a5a',
             tree: '#6a7a5a',
-            grass: '#7a8a6a',
-            cloud: 'rgba(255,255,255,0.04)'
+            grass: '#7a8a6a'
         }, {
             name: '🏛️ Ruínas',
             sky: '#3a2a1a',
@@ -1422,8 +1400,7 @@
             ground2: '#5a4a3a',
             wall: '#3a2a1a',
             tree: '#5a4a2a',
-            grass: '#6a5a3a',
-            cloud: 'rgba(200,180,150,0.03)'
+            grass: '#6a5a3a'
         }, {
             name: '🌋 Vulcão',
             sky: '#1a0a0a',
@@ -1432,8 +1409,7 @@
             ground2: '#3a2a2a',
             wall: '#1a0a0a',
             tree: '#3a1a0a',
-            grass: '#4a2a1a',
-            cloud: 'rgba(255,100,50,0.03)'
+            grass: '#4a2a1a'
         }, {
             name: '☁️ Céu',
             sky: '#2a3a6a',
@@ -1442,8 +1418,7 @@
             ground2: '#4a5a8a',
             wall: '#2a3a5a',
             tree: '#4a6a7a',
-            grass: '#5a7a8a',
-            cloud: 'rgba(255,255,255,0.08)'
+            grass: '#5a7a8a'
         }, {
             name: '🌺 Jardim',
             sky: '#2a1a2a',
@@ -1452,8 +1427,7 @@
             ground2: '#4a3a4a',
             wall: '#2a1a2a',
             tree: '#5a3a5a',
-            grass: '#6a4a6a',
-            cloud: 'rgba(255,150,255,0.03)'
+            grass: '#6a4a6a'
         }, {
             name: '🌊 Oceano',
             sky: '#0a1a2a',
@@ -1462,8 +1436,7 @@
             ground2: '#2a4a5a',
             wall: '#0a2a3a',
             tree: '#2a5a6a',
-            grass: '#3a6a7a',
-            cloud: 'rgba(100,200,255,0.03)'
+            grass: '#3a6a7a'
         }, {
             name: '🏜️ Oásis',
             sky: '#2a3a1a',
@@ -1472,8 +1445,7 @@
             ground2: '#7a8a5a',
             wall: '#4a5a3a',
             tree: '#5a7a3a',
-            grass: '#7a9a5a',
-            cloud: 'rgba(200,255,200,0.03)'
+            grass: '#7a9a5a'
         }, {
             name: '🌙 Noite',
             sky: '#0a0a1a',
@@ -1482,8 +1454,7 @@
             ground2: '#2a2a3a',
             wall: '#0a0a1a',
             tree: '#2a2a3a',
-            grass: '#3a3a4a',
-            cloud: 'rgba(255,255,255,0.02)'
+            grass: '#3a3a4a'
         }, {
             name: '✨ Aurora',
             sky: '#1a0a2a',
@@ -1492,8 +1463,7 @@
             ground2: '#3a2a4a',
             wall: '#1a0a2a',
             tree: '#3a2a5a',
-            grass: '#4a3a6a',
-            cloud: 'rgba(150,100,255,0.04)'
+            grass: '#4a3a6a'
         }];
 
         // ============================================================
@@ -1550,7 +1520,7 @@
         };
 
         // ============================================================
-        //  OBSTÁCULOS
+        //  FUNÇÕES DO JOGO
         // ============================================================
         function createObstacle(x, y, type) {
             const types = {
@@ -1581,9 +1551,6 @@
             };
         }
 
-        // ============================================================
-        //  FUNÇÕES DO JOGO
-        // ============================================================
         function createEnemy(x, y, level = 1) {
             return {
                 x: x,
@@ -1776,7 +1743,7 @@
                 color: bioma.wall
             });
 
-            for (let i = 0; i < 10; i++) {
+            for (let i = 0; i < 8; i++) {
                 const x = 80 + Math.random() * (CONFIG.worldWidth - 160);
                 const treeHeight = 45 + Math.random() * 45;
                 gameObjects.push({
@@ -1787,27 +1754,21 @@
                     type: 'tree',
                     color: bioma.tree
                 });
-                for (let j = 0; j < 3; j++) {
-                    const ox = (j - 1) * 18 + Math.random() * 5;
-                    const oy = -8 - j * 8 + Math.random() * 5;
-                    const size = 20 + Math.random() * 10;
-                    gameObjects.push({
-                        x: x + ox,
-                        y: groundY - treeHeight + oy,
-                        w: size,
-                        h: size * 0.8,
-                        type: 'treeTop',
-                        color: bioma.tree,
-                        shade: j
-                    });
-                }
+                gameObjects.push({
+                    x: x - 18,
+                    y: groundY - treeHeight - 18,
+                    w: 40,
+                    h: 22,
+                    type: 'treeTop',
+                    color: bioma.tree
+                });
             }
 
             const obstacleTypes = ['mushroom', 'plant', 'spike', 'question', 'pipe', 'brick', 'star', 'fireflower', 'goomba',
                 'koopa'
             ];
-            const obsCount = 4 + Math.floor(phase / 2);
-            for (let i = 0; i < Math.min(obsCount, 10); i++) {
+            const obsCount = 3 + Math.floor(phase / 2);
+            for (let i = 0; i < Math.min(obsCount, 8); i++) {
                 let x, y, valid;
                 let attempts = 0;
                 do {
@@ -1946,7 +1907,6 @@
             if (keys.a) moveX = -1;
             if (joyData.active) moveX = joyData.x;
 
-            // CONTROLE GAMEPAD USB
             if (gamepadData.active) {
                 const deadzone = 0.15;
                 let gx = gamepadData.axes.leftX;
@@ -2414,7 +2374,7 @@
         }
 
         // ============================================================
-        //  RENDERIZAÇÃO (SIMPLIFICADA PARA O CÓDIGO)
+        //  RENDERIZAÇÃO
         // ============================================================
         function render() {
             const bioma = BIOMAS[currentBiomaIndex % BIOMAS.length];
@@ -2425,29 +2385,11 @@
             ctx.fillStyle = grad;
             ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-            if (bioma.cloud) {
-                ctx.fillStyle = bioma.cloud;
-                for (let i = 0; i < 4; i++) {
-                    const cx = (i * 350 + Date.now() * 0.003) % (CONFIG.worldWidth + 300) - 150;
-                    const cy = 25 + i * 35 + Math.sin(i * 1.5) * 15;
-                    ctx.beginPath();
-                    ctx.ellipse(cx, cy, 90 + i * 15, 20 + i * 5, 0, 0, Math.PI * 2);
-                    ctx.fill();
-                    ctx.beginPath();
-                    ctx.ellipse(cx - 50, cy + 5, 60 + i * 10, 18, 0, 0, Math.PI * 2);
-                    ctx.fill();
-                    ctx.beginPath();
-                    ctx.ellipse(cx + 50, cy - 5, 70 + i * 10, 22, 0, 0, Math.PI * 2);
-                    ctx.fill();
-                }
-            }
-
             cameraX = player.x - canvas.width / 2;
             cameraX = Math.max(0, Math.min(cameraX, CONFIG.worldWidth - canvas.width));
             ctx.save();
             ctx.translate(-cameraX, 0);
 
-            // Chão e objetos
             gameObjects.forEach(obj => {
                 if (obj.type === 'ground') {
                     ctx.fillStyle = obj.color || bioma.ground;
@@ -2476,7 +2418,6 @@
                 }
             });
 
-            // Obstáculos (decorativos)
             obstacles.forEach(obs => {
                 if (!obs.active) return;
                 ctx.save();
@@ -2673,7 +2614,6 @@
                 ctx.restore();
             });
 
-            // Itens
             items.forEach(item => {
                 if (item.collected) return;
                 const bob = Math.sin(Date.now() * 0.002 + item.bobPhase) * 3;
@@ -2692,7 +2632,6 @@
                 ctx.restore();
             });
 
-            // Chave
             keys.forEach(key => {
                 if (key.collected) return;
                 const bob = Math.sin(Date.now() * 0.002 + key.bobPhase) * 3;
@@ -2711,7 +2650,6 @@
                 ctx.restore();
             });
 
-            // Porta
             doors.forEach(door => {
                 ctx.save();
                 ctx.translate(door.x, door.y);
@@ -2740,7 +2678,6 @@
                 ctx.restore();
             });
 
-            // Inimigos (simplificados)
             enemies.forEach(enemy => {
                 if (!enemy.alive) return;
                 ctx.save();
@@ -2822,7 +2759,6 @@
                 ctx.restore();
             });
 
-            // Projéteis
             bullets.forEach(b => {
                 ctx.fillStyle = '#ff6b35';
                 ctx.shadowColor = '#ff6b35';
@@ -2833,7 +2769,6 @@
                 ctx.shadowBlur = 0;
             });
 
-            // Mísseis
             missiles.forEach(m => {
                 m.trail.forEach(t => {
                     ctx.fillStyle = `rgba(255,68,0,${t.life / 20 * 0.5})`;
@@ -2854,7 +2789,6 @@
                 ctx.fill();
             });
 
-            // Partículas
             particles.forEach(p => {
                 const alpha = p.life / p.maxLife;
                 ctx.globalAlpha = alpha;
@@ -2876,9 +2810,7 @@
                 ctx.globalAlpha = 1;
             });
 
-            // ============================================================
-            //  JOGADOR
-            // ============================================================
+            // Jogador
             ctx.save();
             ctx.translate(player.x + player.w / 2, player.y + player.h);
 
@@ -3082,7 +3014,7 @@
         }
 
         // ============================================================
-        //  CONTROLE GAMEPAD USB (UNIVERSAL)
+        //  CONTROLE GAMEPAD USB (XTRAP)
         // ============================================================
         const gamepadData = {
             connected: false,
@@ -3105,30 +3037,25 @@
                 dpadRight: false,
                 leftStick: false,
                 rightStick: false
-            },
-            prevButtons: {}
+            }
         };
 
         let gamepadIndex = -1;
         let gamepadStatusEl = document.getElementById('gamepad-status');
-        let gamepadIconEl = document.getElementById('gamepadIcon');
         let gamepadTextEl = document.getElementById('gamepadText');
 
         function updateGamepadStatus(connected) {
             if (connected) {
                 gamepadStatusEl.style.display = 'block';
-                gamepadIconEl.textContent = '🎮';
-                gamepadTextEl.innerHTML = 'XTRAP <span class="connected">CONECTADO</span>';
+                gamepadTextEl.innerHTML = '🎮 XTRAP <span class="connected">CONECTADO</span>';
             } else {
                 gamepadStatusEl.style.display = 'block';
-                gamepadIconEl.textContent = '🎮';
-                gamepadTextEl.innerHTML = 'XTRAP <span class="disconnected">DESCONECTADO</span>';
+                gamepadTextEl.innerHTML = '🎮 XTRAP <span class="disconnected">DESCONECTADO</span>';
             }
         }
 
         function scanGamepads() {
             const gamepads = navigator.getGamepads ? navigator.getGamepads() : [];
-
             for (let i = 0; i < gamepads.length; i++) {
                 const gp = gamepads[i];
                 if (gp && gp.connected) {
@@ -3139,7 +3066,6 @@
                     return gp;
                 }
             }
-
             if (gamepadData.connected) {
                 gamepadData.connected = false;
                 gamepadData.active = false;
@@ -3154,7 +3080,6 @@
                 scanGamepads();
                 return;
             }
-
             const gp = navigator.getGamepads()[gamepadIndex];
             if (!gp || !gp.connected) {
                 gamepadData.connected = false;
@@ -3163,80 +3088,45 @@
                 updateGamepadStatus(false);
                 return;
             }
-
             gamepadData.active = true;
-
-            // Eixos
             gamepadData.axes.leftX = gp.axes[0] || 0;
             gamepadData.axes.leftY = gp.axes[1] || 0;
-            gamepadData.axes.rightX = gp.axes[2] || 0;
-            gamepadData.axes.rightY = gp.axes[3] || 0;
-
-            // Botões
             const b = gp.buttons;
-            const deadzone = 0.15;
-
             gamepadData.buttons.a = b[0] ? b[0].pressed : false;
             gamepadData.buttons.b = b[1] ? b[1].pressed : false;
             gamepadData.buttons.x = b[2] ? b[2].pressed : false;
             gamepadData.buttons.y = b[3] ? b[3].pressed : false;
             gamepadData.buttons.lb = b[4] ? b[4].pressed : false;
             gamepadData.buttons.rb = b[5] ? b[5].pressed : false;
-            gamepadData.buttons.lt = b[6] ? b[6].value > deadzone : false;
-            gamepadData.buttons.rt = b[7] ? b[7].value > deadzone : false;
+            gamepadData.buttons.lt = b[6] ? b[6].value > 0.15 : false;
+            gamepadData.buttons.rt = b[7] ? b[7].value > 0.15 : false;
             gamepadData.buttons.back = b[8] ? b[8].pressed : false;
             gamepadData.buttons.start = b[9] ? b[9].pressed : false;
-            gamepadData.buttons.leftStick = b[10] ? b[10].pressed : false;
-            gamepadData.buttons.rightStick = b[11] ? b[11].pressed : false;
             gamepadData.buttons.dpadUp = b[12] ? b[12].pressed : false;
             gamepadData.buttons.dpadDown = b[13] ? b[13].pressed : false;
             gamepadData.buttons.dpadLeft = b[14] ? b[14].pressed : false;
             gamepadData.buttons.dpadRight = b[15] ? b[15].pressed : false;
-
-            if (!gamepadData.connected) {
-                gamepadData.connected = true;
-                updateGamepadStatus(true);
-            }
+            gamepadData.buttons.leftStick = b[10] ? b[10].pressed : false;
+            gamepadData.buttons.rightStick = b[11] ? b[11].pressed : false;
         }
 
-        // ============================================================
-        //  PROCESSAR INPUTS DO GAMEPAD (XTRAP)
-        // ============================================================
         function processGamepadInputs() {
             if (!gamepadData.active) return;
-
             const b = gamepadData.buttons;
 
-            // A = Pulo
-            if (b.a) {
+            if (b.a || b.dpadUp) {
                 if (player.onGround && player.isAlive) {
                     player.vy = CONFIG.jumpForce;
                     player.onGround = false;
                 }
             }
-
-            // B = Tiro
-            if (b.b || b.rt) {
-                shoot();
-            }
-
-            // X = Poder
-            if (b.x || b.lt) {
-                usePower();
-            }
-
-            // Y = Míssil
-            if (b.y) {
-                fireMissile();
-            }
-
-            // L1 = Dash
+            if (b.b || b.rt) { shoot(); }
+            if (b.x || b.lt) { usePower(); }
+            if (b.y) { fireMissile(); }
             if (b.lb) {
                 createParticle(player.x + player.w / 2, player.y + player.h / 2, '#00ccff', 20);
                 showMessage('💨 Dash!');
             }
-
-            // R1 = Escudo
             if (b.rb) {
                 if (player.shieldCharges > 0) {
                     player.shieldCharges--;
@@ -3246,9 +3136,7 @@
                     showMessage('❌ Sem escudo!');
                 }
             }
-
-            // SELECT = Cura
-            if (b.back) {
+            if (b.back || b.dpadLeft) {
                 if (player.health < player.maxHealth) {
                     player.health = Math.min(player.maxHealth, player.health + 20);
                     createParticle(player.x + player.w / 2, player.y + player.h / 2, '#ff6b6b', 15);
@@ -3258,69 +3146,20 @@
                     showMessage('❤️ Vida cheia!');
                 }
             }
-
-            // START = Poder Especial
-            if (b.start) {
-                usePower();
-            }
-
-            // MODE = Míssil (alternativo)
-            if (b.rightStick) {
-                fireMissile();
-            }
-
-            // DPAD = Ações extras
-            if (b.dpadUp) {
-                if (player.onGround && player.isAlive) {
-                    player.vy = CONFIG.jumpForce;
-                    player.onGround = false;
-                }
-            }
-            if (b.dpadDown) {
-                // Agachar (efeito visual)
-                createParticle(player.x + player.w / 2, player.y + player.h / 2, '#ff8800', 10);
-            }
-            if (b.dpadLeft) {
-                // Escudo (alternativo)
-                if (player.shieldCharges > 0) {
-                    player.shieldCharges--;
-                    createParticle(player.x + player.w / 2, player.y + player.h / 2, '#00ff88', 20);
-                    showMessage('🛡️ Escudo ativado!');
-                } else {
-                    showMessage('❌ Sem escudo!');
-                }
-            }
-            if (b.dpadRight) {
-                // Cura (alternativo)
-                if (player.health < player.maxHealth) {
-                    player.health = Math.min(player.maxHealth, player.health + 20);
-                    createParticle(player.x + player.w / 2, player.y + player.h / 2, '#ff6b6b', 15);
-                    updateHUD();
-                    showMessage('❤️ +20 de vida!');
-                } else {
-                    showMessage('❤️ Vida cheia!');
-                }
-            }
+            if (b.start || b.dpadRight) { usePower(); }
+            if (b.rightStick) { fireMissile(); }
         }
 
-        // ============================================================
-        //  INICIALIZAR GAMEPAD
-        // ============================================================
         function initGamepad() {
             if (!navigator.getGamepads) {
                 gamepadStatusEl.style.display = 'none';
                 return;
             }
-
             setTimeout(() => {
                 const gp = scanGamepads();
-                if (gp) {
-                    updateGamepadStatus(true);
-                } else {
-                    updateGamepadStatus(false);
-                }
+                if (gp) updateGamepadStatus(true);
+                else updateGamepadStatus(false);
             }, 500);
-
             window.addEventListener('gamepadconnected', (e) => {
                 gamepadIndex = e.gamepad.index;
                 gamepadData.connected = true;
@@ -3328,7 +3167,6 @@
                 updateGamepadStatus(true);
                 showMessage('🎮 XTRAP Conectado!');
             });
-
             window.addEventListener('gamepaddisconnected', (e) => {
                 if (gamepadIndex === e.gamepad.index) {
                     gamepadData.connected = false;
@@ -3477,11 +3315,9 @@
             }
         });
 
-        // Botões XTRAP Touch
         function setupXtrapButton(btnId, action) {
             const btn = document.getElementById(btnId);
             if (!btn) return;
-
             btn.addEventListener('touchstart', (e) => {
                 e.preventDefault();
                 e.stopPropagation();
@@ -3491,7 +3327,6 @@
                 btn.style.transform = 'scale(0.85)';
                 setTimeout(() => { btn.style.transform = ''; }, 150);
             }, { passive: false });
-
             btn.addEventListener('mousedown', (e) => {
                 e.preventDefault();
                 e.stopPropagation();
@@ -3500,11 +3335,9 @@
                 btn.style.transform = 'scale(0.85)';
                 setTimeout(() => { btn.style.transform = ''; }, 150);
             });
-
             btn.addEventListener('contextmenu', (e) => e.preventDefault());
         }
 
-        // Mapeamento dos botões XTRAP
         setupXtrapButton('btnShoot', shoot);
         setupXtrapButton('btnA', () => {
             if (player.onGround && player.isAlive) {
@@ -3552,7 +3385,6 @@
         setupXtrapButton('btnStart', usePower);
         setupXtrapButton('btnMode', fireMissile);
 
-        // ===== CLICK NO CANVAS =====
         canvas.addEventListener('click', () => shoot());
         canvas.addEventListener('contextmenu', (e) => e.preventDefault());
 
@@ -3564,10 +3396,7 @@
         function gameLoop() {
             if (!gameLoopStarted) { requestAnimationFrame(gameLoop); return; }
 
-            // Ler dados do gamepad
             readGamepad();
-
-            // Processar inputs do gamepad
             processGamepadInputs();
 
             if (player.shootCooldown > 0) player.shootCooldown -= 1 / 60;
@@ -3611,10 +3440,7 @@
             playerCoins = getPlayerCoins(playerData.name);
             createPhase(player.phase);
             updateHUD();
-
-            // Inicializar gamepad
             initGamepad();
-
             gameLoopStarted = true;
             gameLoop();
             console.log(`🧟 Bem-vindo, ${playerData.name}! Fase ${player.phase}`);
