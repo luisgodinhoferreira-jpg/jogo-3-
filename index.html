@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <title>🧟 PITFALL 2D - Infectados</title>
+    <title>🧟 PITFALL 2D</title>
     <style>
         * {
             margin: 0;
@@ -13,7 +13,6 @@
             -webkit-user-select: none;
             user-select: none;
         }
-
         body {
             overflow: hidden;
             font-family: 'Courier New', monospace;
@@ -21,14 +20,14 @@
             touch-action: none;
         }
 
-        /* ===== TELA DE LOGIN MELHORADA ===== */
+        /* ===== TELA DE LOGIN ===== */
         #loginScreen {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(135deg, #0a0a0a 0%, #1a0a0a 40%, #0a0a0a 100%);
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a0a0a 50%, #0a0a0a 100%);
             display: flex;
             justify-content: center;
             align-items: center;
@@ -39,34 +38,22 @@
         }
 
         #loginScreen .logo {
-            font-size: 4rem;
+            font-size: 3.5rem;
             font-weight: bold;
             color: #ff6b35;
-            text-shadow: 0 0 40px rgba(255, 107, 53, 0.3), 0 4px 0 #8B4513, 0 0 80px rgba(255, 107, 53, 0.1);
-            letter-spacing: 6px;
+            text-shadow: 0 0 30px rgba(255, 107, 53, 0.3), 0 4px 0 #8B4513;
+            letter-spacing: 4px;
             text-align: center;
-            margin-bottom: 5px;
-            animation: logoGlow 2s ease-in-out infinite;
-        }
-
-        @keyframes logoGlow {
-            0%,
-            100% {
-                text-shadow: 0 0 40px rgba(255, 107, 53, 0.3), 0 4px 0 #8B4513, 0 0 80px rgba(255, 107, 53, 0.1);
-            }
-            50% {
-                text-shadow: 0 0 60px rgba(255, 107, 53, 0.5), 0 4px 0 #8B4513, 0 0 120px rgba(255, 107, 53, 0.2);
-            }
+            margin-bottom: 10px;
         }
 
         #loginScreen .logo small {
             display: block;
             font-size: 0.8rem;
             color: #c4a882;
-            letter-spacing: 8px;
+            letter-spacing: 6px;
             text-shadow: none;
             margin-top: 5px;
-            font-weight: normal;
         }
 
         .login-container {
@@ -76,7 +63,7 @@
             flex-wrap: wrap;
             justify-content: center;
             width: 100%;
-            max-width: 900px;
+            max-width: 850px;
         }
 
         .login-box {
@@ -96,8 +83,7 @@
             text-align: center;
             margin-bottom: 20px;
             font-size: 1.1rem;
-            letter-spacing: 4px;
-            font-weight: normal;
+            letter-spacing: 3px;
         }
 
         .login-box input {
@@ -166,7 +152,6 @@
             min-height: 20px;
         }
 
-        /* ===== RANKING ===== */
         .ranking-box {
             background: rgba(20, 10, 5, 0.95);
             padding: 25px 30px;
@@ -185,13 +170,12 @@
             text-align: center;
             margin-bottom: 15px;
             font-size: 1rem;
-            letter-spacing: 4px;
-            font-weight: normal;
+            letter-spacing: 3px;
             border-bottom: 1px solid rgba(139, 115, 85, 0.3);
             padding-bottom: 10px;
         }
 
-        .ranking-box .rank-header {
+        .rank-header {
             display: flex;
             justify-content: space-between;
             color: #8B7355;
@@ -202,7 +186,7 @@
             margin-bottom: 5px;
         }
 
-        .ranking-box .rank-item {
+        .rank-item {
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -213,88 +197,70 @@
             border-bottom: 1px solid rgba(139, 115, 85, 0.05);
         }
 
-        .ranking-box .rank-item:hover {
+        .rank-item:hover {
             background: rgba(255, 107, 53, 0.05);
         }
 
-        .ranking-box .rank-item .pos {
+        .rank-item .pos {
             color: #8B7355;
             font-size: 0.7rem;
             min-width: 25px;
         }
 
-        .ranking-box .rank-item .name {
+        .rank-item .name {
             color: #c4a882;
             font-size: 0.8rem;
             flex: 1;
             margin: 0 10px;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
         }
 
-        .ranking-box .rank-item .stats {
+        .rank-item .stats {
             color: #ffd700;
             font-size: 0.65rem;
             display: flex;
-            gap: 12px;
+            gap: 10px;
         }
 
-        .ranking-box .rank-item .stats span {
-            display: flex;
-            align-items: center;
-            gap: 3px;
-        }
-
-        .ranking-box .rank-item .medal {
+        .rank-item .medal {
             font-size: 1.2rem;
             min-width: 30px;
             text-align: center;
         }
 
-        .ranking-box .rank-item.top1 {
+        .rank-item.top1 {
             background: rgba(255, 215, 0, 0.05);
             border-left: 3px solid #ffd700;
         }
-        .ranking-box .rank-item.top2 {
+        .rank-item.top2 {
             background: rgba(192, 192, 192, 0.05);
             border-left: 3px solid #c0c0c0;
         }
-        .ranking-box .rank-item.top3 {
+        .rank-item.top3 {
             background: rgba(205, 127, 50, 0.05);
             border-left: 3px solid #cd7f32;
         }
 
-        .ranking-box .empty-ranking {
+        .empty-ranking {
             color: #5a4a3a;
             text-align: center;
             font-size: 0.8rem;
             padding: 30px 10px;
         }
 
-        .ranking-box .rank-footer {
-            color: #5a4a3a;
-            text-align: center;
-            font-size: 0.55rem;
-            margin-top: 10px;
-            padding-top: 10px;
-            border-top: 1px solid rgba(139, 115, 85, 0.15);
-        }
-
-        ::-webkit-scrollbar {
-            width: 4px;
-        }
-        ::-webkit-scrollbar-track {
-            background: rgba(255, 255, 255, 0.02);
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #8B7355;
-            border-radius: 4px;
-        }
-
         .rank-list {
             max-height: 300px;
             overflow-y: auto;
+        }
+
+        .rank-list::-webkit-scrollbar {
+            width: 4px;
+        }
+        .rank-list::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.02);
+        }
+        .rank-list::-webkit-scrollbar-thumb {
+            background: #8B7355;
+            border-radius: 4px;
         }
 
         /* ===== JOGO ===== */
@@ -303,7 +269,6 @@
             width: 100%;
             height: 100%;
             background: #1a2a1a;
-            image-rendering: auto;
         }
 
         #hud {
@@ -311,7 +276,7 @@
             top: 8px;
             left: 8px;
             right: 8px;
-            display: flex;
+            display: none;
             justify-content: space-between;
             align-items: center;
             color: #ffd700;
@@ -445,127 +410,6 @@
             }
         }
 
-        #shopScreen {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.92);
-            display: none;
-            justify-content: center;
-            align-items: center;
-            z-index: 500;
-            flex-direction: column;
-            padding: 20px;
-        }
-
-        #shopScreen .shop-title {
-            color: #ffd700;
-            font-size: 2rem;
-            font-weight: bold;
-            text-shadow: 0 0 30px rgba(255, 215, 0, 0.3);
-            margin-bottom: 20px;
-            font-family: 'Courier New', monospace;
-        }
-
-        #shopScreen .shop-coins {
-            color: #ffd700;
-            font-size: 1.2rem;
-            margin-bottom: 20px;
-            font-family: 'Courier New', monospace;
-        }
-
-        .shop-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 15px;
-            max-width: 600px;
-            width: 100%;
-        }
-
-        .shop-item {
-            background: rgba(20, 10, 5, 0.9);
-            border: 2px solid #8B7355;
-            border-radius: 12px;
-            padding: 15px;
-            text-align: center;
-            color: #ffd700;
-            font-family: 'Courier New', monospace;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-
-        .shop-item:hover {
-            border-color: #ffd700;
-            transform: scale(1.05);
-            box-shadow: 0 0 30px rgba(255, 215, 0, 0.1);
-        }
-
-        .shop-item .icon {
-            font-size: 2.5rem;
-            display: block;
-            margin-bottom: 5px;
-        }
-
-        .shop-item .name {
-            font-size: 0.8rem;
-            font-weight: bold;
-        }
-
-        .shop-item .price {
-            font-size: 0.7rem;
-            color: #c4a882;
-            margin-top: 5px;
-        }
-
-        .shop-item .price .coin {
-            color: #ffd700;
-        }
-
-        .shop-item .owned {
-            font-size: 0.6rem;
-            color: #2ecc71;
-            margin-top: 3px;
-        }
-
-        .shop-item.bought {
-            border-color: #2ecc71;
-            opacity: 0.6;
-        }
-
-        .shop-item.bought:hover {
-            transform: none;
-            border-color: #2ecc71;
-        }
-
-        .shop-close {
-            margin-top: 20px;
-            padding: 10px 30px;
-            border: 2px solid #8B7355;
-            border-radius: 8px;
-            background: rgba(255, 107, 53, 0.1);
-            color: #ffd700;
-            font-family: 'Courier New', monospace;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-
-        .shop-close:hover {
-            background: rgba(255, 107, 53, 0.2);
-            border-color: #ffd700;
-        }
-
-        .shop-message {
-            color: #ff6b35;
-            font-size: 0.8rem;
-            margin-top: 10px;
-            font-family: 'Courier New', monospace;
-            min-height: 20px;
-        }
-
-        /* ===== CONTROLE XTRAP ===== */
         #mobile-controls {
             position: fixed;
             bottom: 15px;
@@ -583,14 +427,14 @@
             pointer-events: auto;
         }
 
-        .xtrap-analog {
+        .joypad-container {
             width: 110px;
             height: 110px;
             position: relative;
             touch-action: none;
         }
 
-        .xtrap-analog .analog-bg {
+        .joypad-container .joypad-bg {
             width: 100%;
             height: 100%;
             border-radius: 50%;
@@ -603,19 +447,7 @@
             pointer-events: none;
         }
 
-        .xtrap-analog .analog-ring {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 80%;
-            height: 80%;
-            border-radius: 50%;
-            border: 1px solid rgba(100, 150, 255, 0.08);
-            pointer-events: none;
-        }
-
-        .xtrap-analog .analog-knob {
+        .joypad-container .joypad-knob {
             width: 45px;
             height: 45px;
             border-radius: 50%;
@@ -630,51 +462,25 @@
             will-change: transform;
         }
 
-        .xtrap-analog .analog-knob.active {
+        .joypad-container .joypad-knob.active {
             border-color: rgba(100, 150, 255, 0.4);
             box-shadow: 0 0 40px rgba(100, 150, 255, 0.15);
-            background: radial-gradient(circle at 35% 35%, rgba(100, 150, 255, 0.3), rgba(50, 80, 150, 0.08));
         }
 
-        .xtrap-analog .analog-label {
-            position: absolute;
-            bottom: -18px;
-            left: 50%;
-            transform: translateX(-50%);
-            color: rgba(255, 255, 255, 0.12);
-            font-size: 0.4rem;
-            font-family: 'Courier New', monospace;
-            letter-spacing: 2px;
-            pointer-events: none;
-            white-space: nowrap;
-        }
-
-        .xtrap-analog .analog-center {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 6px;
-            height: 6px;
-            border-radius: 50%;
-            background: rgba(100, 150, 255, 0.06);
-            pointer-events: none;
-        }
-
-        .xtrap-buttons {
+        .action-buttons {
             display: flex;
             flex-direction: column;
             align-items: center;
             gap: 5px;
         }
 
-        .xtrap-buttons .xtrap-row {
+        .action-buttons .btn-row {
             display: flex;
             gap: 8px;
             justify-content: center;
         }
 
-        .xtrap-buttons .btn-xtrap {
+        .action-btn {
             width: 52px;
             height: 52px;
             border-radius: 50%;
@@ -692,56 +498,45 @@
             transition: all 0.15s;
             font-family: 'Courier New', monospace;
             -webkit-tap-highlight-color: transparent;
-            position: relative;
             user-select: none;
             color: #ccc;
-            box-shadow: 0 0 20px rgba(200, 200, 200, 0.02);
         }
 
-        .xtrap-buttons .btn-xtrap:active {
+        .action-btn:active {
             transform: scale(0.85);
             background: radial-gradient(circle at 40% 40%, rgba(200, 200, 200, 0.12), rgba(0, 0, 0, 0.6));
             border-color: rgba(200, 200, 200, 0.3);
-            box-shadow: 0 0 40px rgba(200, 200, 200, 0.1);
         }
 
-        .xtrap-buttons .btn-xtrap .label {
-            font-size: 0.35rem;
-            opacity: 0.25;
-            position: absolute;
-            bottom: 3px;
-            right: 5px;
-            font-family: 'Courier New', monospace;
-            letter-spacing: 1px;
-        }
-
-        .xtrap-buttons .btn-xtrap.a {
+        .action-btn.a {
             border-color: rgba(50, 200, 50, 0.15);
             color: #6bff6b;
         }
-        .xtrap-buttons .btn-xtrap.b {
+        .action-btn.b {
             border-color: rgba(255, 50, 50, 0.15);
             color: #ff6b6b;
         }
-        .xtrap-buttons .btn-xtrap.x {
+        .action-btn.x {
             border-color: rgba(50, 200, 255, 0.15);
             color: #6bcbff;
         }
-        .xtrap-buttons .btn-xtrap.y {
+        .action-btn.y {
             border-color: rgba(255, 200, 50, 0.15);
             color: #ffd76b;
         }
-
-        .xtrap-buttons .btn-xtrap.shoulder {
-            width: 40px;
-            height: 40px;
-            font-size: 0.6rem;
-            border-radius: 10px;
-            border-color: rgba(150, 150, 200, 0.08);
-            color: #aaa;
+        .action-btn.shoot {
+            width: 60px;
+            height: 60px;
+            font-size: 1.4rem;
+            border-color: rgba(255, 50, 50, 0.15);
+            background: radial-gradient(circle at 40% 40%, rgba(255, 50, 50, 0.04), rgba(0, 0, 0, 0.5));
+            color: #ff6b6b;
         }
-
-        .xtrap-buttons .btn-xtrap.special {
+        .action-btn.shoot:active {
+            background: radial-gradient(circle at 40% 40%, rgba(255, 50, 50, 0.12), rgba(0, 0, 0, 0.6));
+            border-color: rgba(255, 50, 50, 0.3);
+        }
+        .action-btn.special {
             width: 36px;
             height: 36px;
             font-size: 0.5rem;
@@ -750,19 +545,16 @@
             color: rgba(255, 255, 255, 0.3);
             background: rgba(0, 0, 0, 0.3);
         }
-
-        .xtrap-buttons .btn-xtrap.shoot {
-            width: 60px;
-            height: 60px;
-            font-size: 1.4rem;
-            border-color: rgba(255, 50, 50, 0.15);
-            background: radial-gradient(circle at 40% 40%, rgba(255, 50, 50, 0.04), rgba(0, 0, 0, 0.5));
-            color: #ff6b6b;
+        .action-btn.special:active {
+            background: rgba(255, 255, 255, 0.05);
         }
-        .xtrap-buttons .btn-xtrap.shoot:active {
-            background: radial-gradient(circle at 40% 40%, rgba(255, 50, 50, 0.12), rgba(0, 0, 0, 0.6));
-            border-color: rgba(255, 50, 50, 0.3);
-            box-shadow: 0 0 50px rgba(255, 50, 50, 0.1);
+        .action-btn.shoulder {
+            width: 40px;
+            height: 40px;
+            font-size: 0.6rem;
+            border-radius: 10px;
+            border-color: rgba(150, 150, 200, 0.08);
+            color: #aaa;
         }
 
         #gamepad-status {
@@ -772,7 +564,6 @@
             transform: translateX(-50%);
             color: rgba(255, 215, 0, 0.4);
             font-size: 0.55rem;
-            font-family: 'Courier New', monospace;
             background: rgba(0, 0, 0, 0.5);
             padding: 3px 12px;
             border-radius: 12px;
@@ -787,7 +578,6 @@
         #gamepad-status .connected {
             color: #2ecc71;
         }
-
         #gamepad-status .disconnected {
             color: #e74c3c;
         }
@@ -838,14 +628,7 @@
                 max-height: 180px;
             }
             #loginScreen .logo {
-                font-size: 2.8rem;
-            }
-            .shop-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 10px;
-            }
-            #shopScreen .shop-title {
-                font-size: 1.5rem;
+                font-size: 2.5rem;
             }
             #hud {
                 font-size: 0.5rem;
@@ -858,7 +641,7 @@
             #message {
                 font-size: 0.55rem;
                 padding: 3px 10px;
-                bottom: 125px;
+                bottom: 120px;
                 white-space: normal;
                 max-width: 90%;
             }
@@ -869,109 +652,81 @@
                 padding: 15px 20px;
                 min-width: 150px;
             }
-            .xtrap-analog {
+            .joypad-container {
                 width: 90px;
                 height: 90px;
             }
-            .xtrap-analog .analog-knob {
+            .joypad-container .joypad-knob {
                 width: 38px;
                 height: 38px;
             }
-            .xtrap-buttons .btn-xtrap {
+            .action-btn {
                 width: 44px;
                 height: 44px;
                 font-size: 0.9rem;
             }
-            .xtrap-buttons .btn-xtrap.shoot {
+            .action-btn.shoot {
                 width: 52px;
                 height: 52px;
                 font-size: 1.2rem;
             }
-            .xtrap-buttons .btn-xtrap.shoulder {
+            .action-btn.shoulder {
                 width: 34px;
                 height: 34px;
                 font-size: 0.5rem;
             }
-            .xtrap-buttons .btn-xtrap.special {
+            .action-btn.special {
                 width: 30px;
                 height: 30px;
                 font-size: 0.4rem;
             }
-            .xtrap-buttons .xtrap-row {
+            .action-buttons .btn-row {
                 gap: 6px;
             }
-            .xtrap-buttons {
+            .action-buttons {
                 gap: 4px;
             }
-            .xtrap-analog .analog-label {
-                display: none;
-            }
             #gamepad-status {
-                bottom: 120px;
+                bottom: 115px;
                 font-size: 0.5rem;
                 padding: 2px 10px;
-            }
-            .ranking-box .rank-item .stats {
-                font-size: 0.5rem;
-                gap: 6px;
-            }
-            .ranking-box .rank-item .name {
-                font-size: 0.7rem;
             }
         }
 
         @media (max-width: 480px) {
-            .xtrap-analog {
+            .joypad-container {
                 width: 75px;
                 height: 75px;
             }
-            .xtrap-analog .analog-knob {
+            .joypad-container .joypad-knob {
                 width: 32px;
                 height: 32px;
             }
-            .xtrap-buttons .btn-xtrap {
+            .action-btn {
                 width: 36px;
                 height: 36px;
                 font-size: 0.7rem;
             }
-            .xtrap-buttons .btn-xtrap.shoot {
+            .action-btn.shoot {
                 width: 44px;
                 height: 44px;
                 font-size: 1rem;
             }
-            .xtrap-buttons .btn-xtrap.shoulder {
+            .action-btn.shoulder {
                 width: 28px;
                 height: 28px;
                 font-size: 0.4rem;
             }
-            .xtrap-buttons .btn-xtrap.special {
+            .action-btn.special {
                 width: 26px;
                 height: 26px;
                 font-size: 0.35rem;
             }
-            .xtrap-buttons .xtrap-row {
+            .action-buttons .btn-row {
                 gap: 4px;
             }
             #mobile-controls {
                 padding: 0 8px 5px;
-            }
-            .xtrap-buttons .btn-xtrap .label {
-                display: none;
-            }
-            .shop-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 8px;
-            }
-            .shop-item {
-                padding: 10px;
-            }
-            .shop-item .icon {
-                font-size: 2rem;
-            }
-            #gamepad-status {
-                bottom: 105px;
-                font-size: 0.4rem;
-                padding: 2px 8px;
             }
             #loginScreen .logo {
                 font-size: 2rem;
@@ -981,6 +736,11 @@
             }
             .ranking-box {
                 padding: 15px 20px;
+            }
+            #gamepad-status {
+                bottom: 100px;
+                font-size: 0.4rem;
+                padding: 2px 8px;
             }
         }
 
@@ -1001,7 +761,6 @@
         </div>
 
         <div class="login-container">
-            <!-- Login -->
             <div class="login-box">
                 <h2>🔐 ACESSO</h2>
                 <input type="text" id="playerName" placeholder="NOME DO JOGADOR" maxlength="20" />
@@ -1012,22 +771,20 @@
                 <div class="error-msg" id="loginError"></div>
             </div>
 
-            <!-- Ranking -->
             <div class="ranking-box">
                 <h2>🏆 RANKING</h2>
                 <div class="rank-header">
                     <span>POS</span>
                     <span>JOGADOR</span>
-                    <span>FASE / KILLS</span>
+                    <span>FASE</span>
                 </div>
                 <div class="rank-list" id="rankList"></div>
-                <div class="rank-footer">⚔️ Os melhores sobreviventes</div>
             </div>
         </div>
     </div>
 
     <!-- ===== HUD ===== -->
-    <div id="hud" style="display:none;">
+    <div id="hud">
         <div class="left">
             <div class="health-container">
                 <span>❤️</span>
@@ -1055,339 +812,145 @@
     <!-- ===== CANVAS ===== -->
     <canvas id="gameCanvas"></canvas>
 
-    <!-- ===== LOJA ===== -->
-    <div id="shopScreen">
-        <div class="shop-title">🏪 LOJA DO SOBREVIVENTE</div>
-        <div class="shop-coins">🪙 Moedas: <span id="shopCoins">0</span></div>
-        <div class="shop-grid" id="shopGrid"></div>
-        <div class="shop-message" id="shopMessage"></div>
-        <button class="shop-close" id="shopClose">🔙 VOLTAR AO JOGO</button>
-    </div>
-
-    <!-- ===== CONTROLE XTRAP ===== -->
-    <div id="mobile-controls" style="display:none;">
-        <div class="xtrap-analog" id="joypadContainer">
-            <div class="analog-bg"></div>
-            <div class="analog-ring"></div>
-            <div class="analog-center"></div>
-            <div class="analog-knob" id="joypadKnob"></div>
-            <div class="analog-label">L3</div>
+    <!-- ===== CONTROLE MOBILE ===== -->
+    <div id="mobile-controls">
+        <div class="joypad-container" id="joypadContainer">
+            <div class="joypad-bg"></div>
+            <div class="joypad-knob" id="joypadKnob"></div>
         </div>
 
-        <div class="xtrap-buttons">
-            <div class="xtrap-row">
-                <button class="btn-xtrap shoulder" id="btnL1" style="border-color:rgba(200,100,200,0.1);color:#cc88cc;">L1</button>
-                <button class="btn-xtrap shoulder" id="btnR1" style="border-color:rgba(200,200,100,0.1);color:#cccc88;">R1</button>
+        <div class="action-buttons">
+            <div class="btn-row">
+                <button class="action-btn shoulder" id="btnL1" style="border-color:rgba(200,100,200,0.1);color:#cc88cc;">L1</button>
+                <button class="action-btn shoulder" id="btnR1" style="border-color:rgba(200,200,100,0.1);color:#cccc88;">R1</button>
             </div>
-            <div class="xtrap-row">
-                <button class="btn-xtrap special" id="btnSelect" style="color:rgba(255,200,100,0.3);">SEL</button>
-                <button class="btn-xtrap special" id="btnStart" style="color:rgba(100,255,200,0.3);">STA</button>
-                <button class="btn-xtrap special" id="btnMode" style="color:rgba(200,100,255,0.3);border-color:rgba(200,100,255,0.08);">MOD</button>
+            <div class="btn-row">
+                <button class="action-btn special" id="btnSelect" style="color:rgba(255,200,100,0.3);">SEL</button>
+                <button class="action-btn special" id="btnStart" style="color:rgba(100,255,200,0.3);">STA</button>
+                <button class="action-btn special" id="btnMode" style="color:rgba(200,100,255,0.3);">MOD</button>
             </div>
-            <div class="xtrap-row">
-                <button class="btn-xtrap y" id="btnY">Y</button>
-                <button class="btn-xtrap x" id="btnX">X</button>
-                <button class="btn-xtrap a" id="btnA">A</button>
-                <button class="btn-xtrap b" id="btnB">B</button>
+            <div class="btn-row">
+                <button class="action-btn y" id="btnY">Y</button>
+                <button class="action-btn x" id="btnX">X</button>
+                <button class="action-btn a" id="btnA">A</button>
+                <button class="action-btn b" id="btnB">B</button>
             </div>
-            <div class="xtrap-row">
-                <button class="btn-xtrap shoulder" id="btnL2" style="border-color:rgba(100,200,200,0.1);color:#88cccc;">L2</button>
-                <button class="btn-xtrap shoot" id="btnShoot">🔫</button>
-                <button class="btn-xtrap shoulder" id="btnR2" style="border-color:rgba(200,100,100,0.1);color:#cc8888;">R2</button>
+            <div class="btn-row">
+                <button class="action-btn shoulder" id="btnL2" style="border-color:rgba(100,200,200,0.1);color:#88cccc;">L2</button>
+                <button class="action-btn shoot" id="btnShoot">🔫</button>
+                <button class="action-btn shoulder" id="btnR2" style="border-color:rgba(200,100,100,0.1);color:#cc8888;">R2</button>
             </div>
         </div>
     </div>
 
     <!-- ===== INDICADOR GAMEPAD ===== -->
     <div id="gamepad-status">
-        <span id="gamepadIcon">🎮</span>
-        <span id="gamepadText">Nenhum controle conectado</span>
+        <span id="gamepadText">Nenhum controle</span>
     </div>
 
     <script>
         // ============================================================
-        //  SISTEMA DE LOGIN / CADASTRO / RANKING
+        //  SISTEMA DE LOGIN / CADASTRO / RANKING (SIMPLES)
         // ============================================================
-        const PLAYERS_KEY = 'pitfall_players_2d_v12';
-        let currentPlayer = null;
+        const PLAYERS_KEY = 'pitfall_players_v14';
 
         function getPlayers() {
-            try {
-                const data = localStorage.getItem(PLAYERS_KEY);
-                return data ? JSON.parse(data) : [];
-            } catch (e) {
-                console.error('Erro ao ler jogadores:', e);
-                return [];
-            }
+            try { return JSON.parse(localStorage.getItem(PLAYERS_KEY)) || []; } catch (e) { return []; }
         }
 
-        function savePlayers(players) {
-            try {
-                localStorage.setItem(PLAYERS_KEY, JSON.stringify(players));
-            } catch (e) {
-                console.error('Erro ao salvar jogadores:', e);
-            }
+        function savePlayers(p) {
+            try { localStorage.setItem(PLAYERS_KEY, JSON.stringify(p)); } catch (e) {}
         }
 
-        function getPlayerData(name) {
-            const players = getPlayers();
-            return players.find(p => p.name === name);
-        }
-
-        function updatePlayerData(name, data) {
-            const players = getPlayers();
-            const idx = players.findIndex(p => p.name === name);
-            if (idx !== -1) {
-                players[idx] = { ...players[idx], ...data };
-                savePlayers(players);
-            }
-        }
-
-        function getPlayerCoins(name) {
-            const p = getPlayerData(name);
-            return p ? (p.coins || 0) : 0;
-        }
-
-        function addPlayerCoins(name, amount) {
-            const p = getPlayerData(name);
-            if (p) {
-                p.coins = (p.coins || 0) + amount;
-                updatePlayerData(name, { coins: p.coins });
-                return p.coins;
-            }
-            return 0;
-        }
-
-        function getPlayerInventory(name) {
-            const p = getPlayerData(name);
-            return p ? (p.inventory || []) : [];
-        }
-
-        // ===== RANKING =====
         function getRanking() {
             const players = getPlayers();
-            return players
-                .filter(p => p.kills !== undefined && p.phase !== undefined)
-                .sort((a, b) => {
-                    // Primeiro por fase (maior = melhor)
-                    if (b.phase !== a.phase) return b.phase - a.phase;
-                    // Depois por kills (maior = melhor)
-                    return (b.kills || 0) - (a.kills || 0);
-                })
+            return players.filter(p => p.kills !== undefined)
+                .sort((a, b) => (b.phase || 1) - (a.phase || 1) || (b.kills || 0) - (a.kills || 0))
                 .slice(0, 10);
         }
 
         function renderRanking() {
             const list = document.getElementById('rankList');
             const ranking = getRanking();
-
             if (ranking.length === 0) {
-                list.innerHTML = '<div class="empty-ranking">🏆 Nenhum jogador no ranking<br><span style="font-size:0.6rem;color:#4a3a2a;">Jogue para aparecer aqui!</span></div>';
+                list.innerHTML = '<div class="empty-ranking">🏆 Nenhum jogador</div>';
                 return;
             }
-
             const medals = ['🥇', '🥈', '🥉'];
-
-            list.innerHTML = ranking.map((p, index) => {
-                const medal = index < 3 ? medals[index] : `#${index + 1}`;
-                const isTop = index < 3;
-                const topClass = isTop ? `top${index + 1}` : '';
-                return `
-                            <div class="rank-item ${topClass}" data-name="${p.name}">
-                                <span class="medal">${medal}</span>
-                                <span class="name">🧟 ${p.name}</span>
-                                <span class="stats">
-                                    <span>🌍 ${p.phase || 1}</span>
-                                    <span>💀 ${p.kills || 0}</span>
-                                    <span>🪙 ${p.coins || 0}</span>
-                                </span>
-                            </div>
-                        `;
+            list.innerHTML = ranking.map((p, i) => {
+                const medal = i < 3 ? medals[i] : `#${i+1}`;
+                const topClass = i < 3 ? `top${i+1}` : '';
+                return `<div class="rank-item ${topClass}" data-name="${p.name}">
+                            <span class="medal">${medal}</span>
+                            <span class="name">🧟 ${p.name}</span>
+                            <span class="stats">🌍 ${p.phase||1} 💀 ${p.kills||0} 🪙 ${p.coins||0}</span>
+                        </div>`;
             }).join('');
-
-            // Clique no ranking para preencher o nome
             list.querySelectorAll('.rank-item').forEach(el => {
                 el.addEventListener('click', () => {
-                    const name = el.dataset.name;
-                    document.getElementById('playerName').value = name;
-                    document.getElementById('loginError').textContent = `👤 Jogador selecionado: ${name}`;
+                    document.getElementById('playerName').value = el.dataset.name;
+                    document.getElementById('loginError').textContent = '👤 Selecionado';
                     document.getElementById('loginError').style.color = '#2ecc71';
                 });
             });
         }
 
-        // ============================================================
-        //  SHOP (Loja)
-        // ============================================================
-        const SHOP_ITEMS = [
-            { id: 'potion', name: 'Poção de Vida', icon: '🧪', price: 50, desc: 'Restaura 50 de vida', owned: false },
-            { id: 'super_potion', name: 'Poção Suprema', icon: '💎', price: 100, desc: 'Restaura 100 de vida', owned: false },
-            { id: 'shield', name: 'Escudo Protetor', icon: '🛡️', price: 75, desc: 'Bloqueia 1 ataque', owned: false },
-            { id: 'sword', name: 'Espada Afiada', icon: '⚔️', price: 120, desc: 'Dano +15', owned: false },
-            { id: 'boots', name: 'Botas Velozes', icon: '👢', price: 80, desc: 'Velocidade +20%', owned: false },
-            { id: 'armor', name: 'Armadura Leve', icon: '🦺', price: 90, desc: 'Defesa +10', owned: false },
-            { id: 'bow', name: 'Arco e Flecha', icon: '🏹', price: 110, desc: 'Tiro duplo', owned: false },
-            { id: 'ring', name: 'Anel de Poder', icon: '💍', price: 150, desc: 'Poder +20%', owned: false },
-            { id: 'amulet', name: 'Amuleto da Sorte', icon: '🔮', price: 200, desc: 'Itens dobrados', owned: false }
-        ];
-
-        function buyItem(playerName, itemId) {
-            const players = getPlayers();
-            const p = players.find(p => p.name === playerName);
-            if (!p) return { success: false, msg: 'Jogador não encontrado' };
-
-            const item = SHOP_ITEMS.find(i => i.id === itemId);
-            if (!item) return { success: false, msg: 'Item não encontrado' };
-
-            const inventory = p.inventory || [];
-            if (inventory.includes(itemId)) {
-                return { success: false, msg: 'Você já possui este item!' };
-            }
-
-            const coins = p.coins || 0;
-            if (coins < item.price) {
-                return { success: false, msg: `Moedas insuficientes! (${item.price}🪙)` };
-            }
-
-            p.coins = coins - item.price;
-            p.inventory = [...inventory, itemId];
-            savePlayers(players);
-            return { success: true, msg: `✅ ${item.name} comprado!` };
-        }
-
-        function renderShop() {
-            const grid = document.getElementById('shopGrid');
-            const inventory = getPlayerInventory(currentPlayer.name);
-            const coins = getPlayerCoins(currentPlayer.name);
-
-            document.getElementById('shopCoins').textContent = coins;
-
-            grid.innerHTML = SHOP_ITEMS.map(item => {
-                const owned = inventory.includes(item.id);
-                return `
-                                <div class="shop-item ${owned ? 'bought' : ''}" data-id="${item.id}">
-                                    <span class="icon">${item.icon}</span>
-                                    <div class="name">${item.name}</div>
-                                    <div class="price"><span class="coin">🪙</span> ${item.price}</div>
-                                    <div class="desc" style="font-size:0.55rem;color:#c4a882;margin-top:3px;">${item.desc}</div>
-                                    ${owned ? '<div class="owned">✅ ADQUIRIDO</div>' : ''}
-                                </div>
-                            `;
-            }).join('');
-
-            grid.querySelectorAll('.shop-item').forEach(el => {
-                el.addEventListener('click', () => {
-                    if (el.classList.contains('bought')) {
-                        document.getElementById('shopMessage').textContent = 'ℹ️ Você já possui este item!';
-                        return;
-                    }
-                    const id = el.dataset.id;
-                    const result = buyItem(currentPlayer.name, id);
-                    document.getElementById('shopMessage').textContent = result.msg;
-                    if (result.success) {
-                        renderShop();
-                        updateHUD();
-                        renderRanking();
-                    }
-                });
-            });
-        }
-
-        document.getElementById('shopClose').addEventListener('click', () => {
-            document.getElementById('shopScreen').style.display = 'none';
-            document.getElementById('victory').style.display = 'none';
-            restartGameAfterShop();
-        });
-
-        // ============================================================
-        //  FUNÇÕES DE LOGIN
-        // ============================================================
         function loginPlayer(name) {
             if (!name || name.trim() === '') {
                 document.getElementById('loginError').textContent = '❌ Digite um nome';
-                document.getElementById('loginError').style.color = '#ff6b35';
                 return;
             }
             name = name.trim();
             const players = getPlayers();
             const player = players.find(p => p.name.toLowerCase() === name.toLowerCase());
-
             if (!player) {
-                document.getElementById('loginError').textContent = '❌ Jogador não encontrado. Cadastre-se!';
-                document.getElementById('loginError').style.color = '#ff6b35';
+                document.getElementById('loginError').textContent = '❌ Não encontrado. Cadastre-se!';
                 return;
             }
-
             currentPlayer = player;
-            document.getElementById('loginError').textContent = '✅ Bem-vindo, ' + name + '!';
+            document.getElementById('loginError').textContent = '✅ Bem-vindo!';
             document.getElementById('loginError').style.color = '#2ecc71';
-
-            setTimeout(() => {
-                document.getElementById('loginScreen').style.display = 'none';
-                document.getElementById('hud').style.display = 'flex';
-                document.getElementById('mobile-controls').style.display = 'flex';
-                document.getElementById('playerNameDisplay').textContent = name;
-                startGame(player);
-            }, 500);
+            document.getElementById('loginScreen').style.display = 'none';
+            document.getElementById('hud').style.display = 'flex';
+            document.getElementById('mobile-controls').style.display = 'flex';
+            document.getElementById('playerNameDisplay').textContent = name;
+            startGame(player);
         }
 
         function registerPlayer() {
-            const input = document.getElementById('playerName');
-            const name = input.value.trim();
-
+            const name = document.getElementById('playerName').value.trim();
             if (!name) {
                 document.getElementById('loginError').textContent = '❌ Digite um nome';
-                document.getElementById('loginError').style.color = '#ff6b35';
                 return;
             }
-
             const players = getPlayers();
             if (players.find(p => p.name.toLowerCase() === name.toLowerCase())) {
                 document.getElementById('loginError').textContent = '❌ Nome já existe';
-                document.getElementById('loginError').style.color = '#ff6b35';
                 return;
             }
-
-            const newPlayer = {
-                name: name,
-                phase: 1,
-                kills: 0,
-                health: 100,
-                coins: 0,
-                inventory: [],
-                createdAt: Date.now()
-            };
-
+            const newPlayer = { name, phase: 1, kills: 0, health: 100, coins: 0, inventory: [] };
             players.push(newPlayer);
             savePlayers(players);
             renderRanking();
-
-            document.getElementById('loginError').textContent = '✅ Cadastrado com sucesso! Clique em ENTRAR';
+            document.getElementById('loginError').textContent = '✅ Cadastrado! Clique em ENTRAR';
             document.getElementById('loginError').style.color = '#2ecc71';
-            input.value = '';
-
-            setTimeout(() => {
-                document.getElementById('loginError').textContent = '';
-            }, 3000);
+            document.getElementById('playerName').value = '';
+            setTimeout(() => document.getElementById('loginError').textContent = '', 3000);
         }
 
-        document.getElementById('btnLogin').addEventListener('click', function() {
-            const name = document.getElementById('playerName').value.trim();
-            loginPlayer(name);
+        document.getElementById('btnLogin').addEventListener('click', () => {
+            loginPlayer(document.getElementById('playerName').value.trim());
+        });
+        document.getElementById('btnRegister').addEventListener('click', registerPlayer);
+        document.getElementById('playerName').addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') document.getElementById('btnLogin').click();
         });
 
-        document.getElementById('btnRegister').addEventListener('click', function() {
-            registerPlayer();
-        });
-
-        document.getElementById('playerName').addEventListener('keydown', function(e) {
-            if (e.key === 'Enter') {
-                document.getElementById('btnLogin').click();
-            }
-        });
+        let currentPlayer = null;
+        renderRanking();
 
         // ============================================================
-        //  JOGO 2D
+        //  JOGO 2D (SIMPLIFICADO)
         // ============================================================
         const canvas = document.getElementById('gameCanvas');
         const ctx = canvas.getContext('2d');
@@ -1399,9 +962,6 @@
         resizeCanvas();
         window.addEventListener('resize', resizeCanvas);
 
-        // ============================================================
-        //  CONFIGURAÇÕES
-        // ============================================================
         const CONFIG = {
             gravity: 0.6,
             jumpForce: -12,
@@ -1423,149 +983,39 @@
             powerDuration: 0.5
         };
 
-        // ============================================================
-        //  BIOMAS
-        // ============================================================
-        const BIOMAS = [{
-            name: '🌲 Floresta',
-            sky: '#0d1f0d',
-            skyGrad: ['#0d1f0d', '#1a3a1a'],
-            ground: '#1a4a1a',
-            ground2: '#2a5a2a',
-            wall: '#3a2a1a',
-            tree: '#2a6a2a',
-            grass: '#3a6a3a'
-        }, {
-            name: '🏜️ Deserto',
-            sky: '#4a3a2a',
-            skyGrad: ['#4a3a2a', '#6a5a3a'],
-            ground: '#8a7a4a',
-            ground2: '#9a8a5a',
-            wall: '#6a5a3a',
-            tree: '#8a6a3a',
-            grass: '#aa8844'
-        }, {
-            name: '❄️ Tundra',
-            sky: '#3a4a6a',
-            skyGrad: ['#3a4a6a', '#5a6a8a'],
-            ground: '#4a5a7a',
-            ground2: '#5a6a8a',
-            wall: '#3a4a5a',
-            tree: '#5a7a8a',
-            grass: '#6a8a9a'
-        }, {
-            name: '🌿 Pântano',
-            sky: '#0d1a0d',
-            skyGrad: ['#0d1a0d', '#1a2a1a'],
-            ground: '#1a3a2a',
-            ground2: '#2a4a3a',
-            wall: '#2a1a1a',
-            tree: '#2a5a3a',
-            grass: '#3a6a4a'
-        }, {
-            name: '🕯️ Caverna',
-            sky: '#0a0a0a',
-            skyGrad: ['#0a0a0a', '#1a1a1a'],
-            ground: '#2a2a2a',
-            ground2: '#3a3a3a',
-            wall: '#1a1a1a',
-            tree: '#3a3a2a',
-            grass: '#4a4a3a'
-        }, {
-            name: '🏖️ Praia',
-            sky: '#4a6a8a',
-            skyGrad: ['#4a6a8a', '#6a8aaa'],
-            ground: '#8a8a6a',
-            ground2: '#9a9a7a',
-            wall: '#6a5a4a',
-            tree: '#6a8a5a',
-            grass: '#8aaa6a'
-        }, {
-            name: '⛰️ Montanha',
-            sky: '#4a5a7a',
-            skyGrad: ['#4a5a7a', '#6a7a9a'],
-            ground: '#5a5a6a',
-            ground2: '#6a6a7a',
-            wall: '#4a4a5a',
-            tree: '#6a7a5a',
-            grass: '#7a8a6a'
-        }, {
-            name: '🏛️ Ruínas',
-            sky: '#3a2a1a',
-            skyGrad: ['#3a2a1a', '#5a4a3a'],
-            ground: '#4a3a2a',
-            ground2: '#5a4a3a',
-            wall: '#3a2a1a',
-            tree: '#5a4a2a',
-            grass: '#6a5a3a'
-        }, {
-            name: '🌋 Vulcão',
-            sky: '#1a0a0a',
-            skyGrad: ['#1a0a0a', '#2a1a1a'],
-            ground: '#2a1a1a',
-            ground2: '#3a2a2a',
-            wall: '#1a0a0a',
-            tree: '#3a1a0a',
-            grass: '#4a2a1a'
-        }, {
-            name: '☁️ Céu',
-            sky: '#2a3a6a',
-            skyGrad: ['#2a3a6a', '#4a5a8a'],
-            ground: '#3a4a7a',
-            ground2: '#4a5a8a',
-            wall: '#2a3a5a',
-            tree: '#4a6a7a',
-            grass: '#5a7a8a'
-        }, {
-            name: '🌺 Jardim',
-            sky: '#2a1a2a',
-            skyGrad: ['#2a1a2a', '#4a3a4a'],
-            ground: '#3a2a3a',
-            ground2: '#4a3a4a',
-            wall: '#2a1a2a',
-            tree: '#5a3a5a',
-            grass: '#6a4a6a'
-        }, {
-            name: '🌊 Oceano',
-            sky: '#0a1a2a',
-            skyGrad: ['#0a1a2a', '#1a3a4a'],
-            ground: '#1a3a4a',
-            ground2: '#2a4a5a',
-            wall: '#0a2a3a',
-            tree: '#2a5a6a',
-            grass: '#3a6a7a'
-        }, {
-            name: '🏜️ Oásis',
-            sky: '#2a3a1a',
-            skyGrad: ['#2a3a1a', '#4a5a3a'],
-            ground: '#6a7a4a',
-            ground2: '#7a8a5a',
-            wall: '#4a5a3a',
-            tree: '#5a7a3a',
-            grass: '#7a9a5a'
-        }, {
-            name: '🌙 Noite',
-            sky: '#0a0a1a',
-            skyGrad: ['#0a0a1a', '#1a1a2a'],
-            ground: '#1a1a2a',
-            ground2: '#2a2a3a',
-            wall: '#0a0a1a',
-            tree: '#2a2a3a',
-            grass: '#3a3a4a'
-        }, {
-            name: '✨ Aurora',
-            sky: '#1a0a2a',
-            skyGrad: ['#1a0a2a', '#2a1a4a'],
-            ground: '#2a1a3a',
-            ground2: '#3a2a4a',
-            wall: '#1a0a2a',
-            tree: '#3a2a5a',
-            grass: '#4a3a6a'
-        }];
+        const BIOMAS = [
+            { name: '🌲 Floresta', sky: '#0d1f0d', skyGrad: ['#0d1f0d', '#1a3a1a'], ground: '#1a4a1a', wall: '#3a2a1a',
+                tree: '#2a6a2a', grass: '#3a6a3a' },
+            { name: '🏜️ Deserto', sky: '#4a3a2a', skyGrad: ['#4a3a2a', '#6a5a3a'], ground: '#8a7a4a', wall: '#6a5a3a',
+                tree: '#8a6a3a', grass: '#aa8844' },
+            { name: '❄️ Tundra', sky: '#3a4a6a', skyGrad: ['#3a4a6a', '#5a6a8a'], ground: '#4a5a7a', wall: '#3a4a5a',
+                tree: '#5a7a8a', grass: '#6a8a9a' },
+            { name: '🌿 Pântano', sky: '#0d1a0d', skyGrad: ['#0d1a0d', '#1a2a1a'], ground: '#1a3a2a', wall: '#2a1a1a',
+                tree: '#2a5a3a', grass: '#3a6a4a' },
+            { name: '🕯️ Caverna', sky: '#0a0a0a', skyGrad: ['#0a0a0a', '#1a1a1a'], ground: '#2a2a2a', wall: '#1a1a1a',
+                tree: '#3a3a2a', grass: '#4a4a3a' },
+            { name: '🏖️ Praia', sky: '#4a6a8a', skyGrad: ['#4a6a8a', '#6a8aaa'], ground: '#8a8a6a', wall: '#6a5a4a',
+                tree: '#6a8a5a', grass: '#8aaa6a' },
+            { name: '⛰️ Montanha', sky: '#4a5a7a', skyGrad: ['#4a5a7a', '#6a7a9a'], ground: '#5a5a6a', wall: '#4a4a5a',
+                tree: '#6a7a5a', grass: '#7a8a6a' },
+            { name: '🏛️ Ruínas', sky: '#3a2a1a', skyGrad: ['#3a2a1a', '#5a4a3a'], ground: '#4a3a2a', wall: '#3a2a1a',
+                tree: '#5a4a2a', grass: '#6a5a3a' },
+            { name: '🌋 Vulcão', sky: '#1a0a0a', skyGrad: ['#1a0a0a', '#2a1a1a'], ground: '#2a1a1a', wall: '#1a0a0a',
+                tree: '#3a1a0a', grass: '#4a2a1a' },
+            { name: '☁️ Céu', sky: '#2a3a6a', skyGrad: ['#2a3a6a', '#4a5a8a'], ground: '#3a4a7a', wall: '#2a3a5a',
+                tree: '#4a6a7a', grass: '#5a7a8a' },
+            { name: '🌺 Jardim', sky: '#2a1a2a', skyGrad: ['#2a1a2a', '#4a3a4a'], ground: '#3a2a3a', wall: '#2a1a2a',
+                tree: '#5a3a5a', grass: '#6a4a6a' },
+            { name: '🌊 Oceano', sky: '#0a1a2a', skyGrad: ['#0a1a2a', '#1a3a4a'], ground: '#1a3a4a', wall: '#0a2a3a',
+                tree: '#2a5a6a', grass: '#3a6a7a' },
+            { name: '🏜️ Oásis', sky: '#2a3a1a', skyGrad: ['#2a3a1a', '#4a5a3a'], ground: '#6a7a4a', wall: '#4a5a3a',
+                tree: '#5a7a3a', grass: '#7a9a5a' },
+            { name: '🌙 Noite', sky: '#0a0a1a', skyGrad: ['#0a0a1a', '#1a1a2a'], ground: '#1a1a2a', wall: '#0a0a1a',
+                tree: '#2a2a3a', grass: '#3a3a4a' },
+            { name: '✨ Aurora', sky: '#1a0a2a', skyGrad: ['#1a0a2a', '#2a1a4a'], ground: '#2a1a3a', wall: '#1a0a2a',
+                tree: '#3a2a5a', grass: '#4a3a6a' }
+        ];
 
-        // ============================================================
-        //  ESTADO DO JOGO
-        // ============================================================
         let currentBiomaIndex = 0;
         let gameObjects = [];
         let enemies = [];
@@ -1584,9 +1034,6 @@
         let powerTimer = 0;
         let playerCoins = 0;
 
-        // ============================================================
-        //  JOGADOR
-        // ============================================================
         const player = {
             x: 100,
             y: 300,
@@ -1616,9 +1063,6 @@
             walkCycle: 0
         };
 
-        // ============================================================
-        //  FUNÇÕES DO JOGO
-        // ============================================================
         function createObstacle(x, y, type) {
             const types = {
                 mushroom: { w: 30, h: 30, color: '#ff4444' },
@@ -1628,151 +1072,54 @@
                 pipe: { w: 32, h: 42, color: '#44cc44' },
                 brick: { w: 30, h: 22, color: '#cc8844' },
                 star: { w: 26, h: 26, color: '#ffdd00' },
-                fireflower: { w: 26, h: 30, color: '#ff6600' },
-                goomba: { w: 28, h: 30, color: '#8B4513' },
-                koopa: { w: 30, h: 32, color: '#44cc44' }
+                fireflower: { w: 26, h: 30, color: '#ff6600' }
             };
             const data = types[type] || types.spike;
-            return {
-                x: x,
-                y: y,
-                w: data.w,
-                h: data.h,
-                type: type,
-                color: data.color,
-                active: true,
-                animTimer: 0,
-                damage: 0,
-                bobPhase: Math.random() * Math.PI * 2,
-                isObstacle: true
-            };
+            return { x, y, w: data.w, h: data.h, type, color: data.color, active: true, animTimer: 0, damage: 0,
+                bobPhase: Math.random() * Math.PI * 2 };
         }
 
         function createEnemy(x, y, level = 1) {
-            return {
-                x: x,
-                y: y,
-                w: 32,
-                h: 38,
-                vx: 0,
-                vy: 0,
-                health: 20 + level * 6,
-                maxHealth: 20 + level * 6,
-                alive: true,
-                speed: CONFIG.enemySpeed + (level - 1) * 0.12,
-                attackCooldown: 0,
-                damage: 8 + level * 2,
-                level: level,
-                facing: -1,
-                animFrame: 0,
-                animTimer: 0,
-                type: 'zombie',
-                walkCycle: 0
-            };
+            return { x, y, w: 32, h: 38, vx: 0, vy: 0, health: 20 + level * 6, maxHealth: 20 + level * 6, alive: true,
+                speed: CONFIG.enemySpeed + (level - 1) * 0.12, attackCooldown: 0, damage: 8 + level * 2, level,
+                facing: -1, animFrame: 0, animTimer: 0 };
         }
 
-        function createItem(x, y) {
-            return {
-                x: x,
-                y: y,
-                w: 22,
-                h: 22,
-                collected: false,
-                type: 'item',
-                bobPhase: Math.random() * Math.PI * 2
-            };
-        }
+        function createItem(x, y) { return { x, y, w: 22, h: 22, collected: false, bobPhase: Math.random() * Math.PI *
+                2 }; }
 
-        function createKey(x, y) {
-            return {
-                x: x,
-                y: y,
-                w: 18,
-                h: 22,
-                collected: false,
-                type: 'key',
-                bobPhase: Math.random() * Math.PI * 2
-            };
-        }
+        function createKey(x, y) { return { x, y, w: 18, h: 22, collected: false, bobPhase: Math.random() * Math.PI *
+                2 }; }
 
-        function createDoor(x, y) {
-            return {
-                x: x,
-                y: y,
-                w: 34,
-                h: 50,
-                opened: false,
-                type: 'door'
-            };
-        }
+        function createDoor(x, y) { return { x, y, w: 34, h: 50, opened: false }; }
 
-        function createBullet(x, y, vx, vy, damage) {
-            return {
-                x: x,
-                y: y,
-                w: 10,
-                h: 10,
-                vx: vx,
-                vy: vy,
-                damage: damage || CONFIG.bulletDamage,
-                life: 60,
-                type: 'bullet'
-            };
-        }
+        function createBullet(x, y, vx, vy, damage) { return { x, y, w: 10, h: 10, vx, vy, damage: damage || CONFIG
+                    .bulletDamage, life: 60 }; }
 
-        function createMissile(x, y, target) {
-            return {
-                x: x,
-                y: y,
-                w: 14,
-                h: 18,
-                target: target,
-                speed: CONFIG.missileSpeed,
-                damage: CONFIG.missileDamage,
-                life: 90,
-                type: 'missile',
-                trail: []
-            };
-        }
+        function createMissile(x, y, target) { return { x, y, w: 14, h: 18, target, speed: CONFIG.missileSpeed,
+                damage: CONFIG.missileDamage, life: 90, trail: [] }; }
 
         function createParticle(x, y, color, count) {
             for (let i = 0; i < (count || 15); i++) {
-                particles.push({
-                    x: x,
-                    y: y,
-                    vx: (Math.random() - 0.5) * 6,
-                    vy: (Math.random() - 0.5) * 6 - 2,
-                    life: 30 + Math.random() * 20,
-                    maxLife: 50,
-                    size: 3 + Math.random() * 5,
-                    color: color || '#ff6b35',
-                    type: 'particle'
-                });
+                particles.push({ x, y, vx: (Math.random() - 0.5) * 6, vy: (Math.random() - 0.5) * 6 - 2,
+                    life: 30 + Math.random() * 20, maxLife: 50, size: 3 + Math.random() * 5, color: color ||
+                        '#ff6b35' });
             }
         }
 
-        function createPowerWave(x, y, facing) {
-            for (let i = 0; i < 35; i++) {
-                const angle = (i / 35) * Math.PI * 2;
-                const speed = 3 + Math.random() * 2.5;
-                powerParticles.push({
-                    x: x,
-                    y: y,
-                    vx: Math.cos(angle) * speed,
-                    vy: Math.sin(angle) * speed - 1,
-                    life: 40 + Math.random() * 20,
-                    maxLife: 60,
-                    size: 4 + Math.random() * 7,
-                    color: Math.random() > 0.5 ? '#00ccff' : '#44ddff',
-                    type: 'power'
-                });
+        function createPowerWave(x, y) {
+            for (let i = 0; i < 30; i++) {
+                const angle = (i / 30) * Math.PI * 2;
+                const speed = 3 + Math.random() * 2;
+                powerParticles.push({ x, y, vx: Math.cos(angle) * speed, vy: Math.sin(angle) * speed - 1,
+                    life: 40 + Math.random() * 20, maxLife: 60, size: 4 + Math.random() * 6,
+                    color: Math.random() > 0.5 ? '#00ccff' : '#44ddff' });
             }
-
             const damage = 30 + player.bonusDamage;
             enemies.forEach(enemy => {
                 if (!enemy.alive) return;
-                const dx = enemy.x - x;
-                const dy = enemy.y - y;
+                const dx = enemy.x - x,
+                    dy = enemy.y - y;
                 const dist2 = Math.sqrt(dx * dx + dy * dy);
                 if (dist2 < 160) {
                     enemy.health -= damage;
@@ -1785,17 +1132,30 @@
                         createParticle(enemy.x + enemy.w / 2, enemy.y + enemy.h / 2, '#ff4400', 30);
                         updateHUD();
                         renderRanking();
-                        showMessage('⚡ Poder destrutivo! +5🪙');
+                        showMessage('⚡ Poder! +5🪙');
                     }
                 }
             });
-
             showMessage('⚡ Onda de Poder!');
         }
 
-        // ============================================================
-        //  GERENCIAMENTO DE FASES
-        // ============================================================
+        function addPlayerCoins(name, amount) {
+            const players = getPlayers();
+            const p = players.find(p => p.name === name);
+            if (p) { p.coins = (p.coins || 0) + amount;
+                savePlayers(players); }
+        }
+
+        function getPlayerCoins(name) {
+            const p = getPlayers().find(p => p.name === name);
+            return p ? (p.coins || 0) : 0;
+        }
+
+        function getPlayerInventory(name) {
+            const p = getPlayers().find(p => p.name === name);
+            return p ? (p.inventory || []) : [];
+        }
+
         function clearPhase() {
             gameObjects = [];
             enemies = [];
@@ -1815,56 +1175,20 @@
             const bioma = BIOMAS[currentBiomaIndex];
             const groundY = canvas.height - 60;
 
-            gameObjects.push({
-                x: 0,
-                y: groundY,
-                w: CONFIG.worldWidth,
-                h: 60,
-                type: 'ground',
-                color: bioma.ground
-            });
-
-            gameObjects.push({
-                x: -20,
-                y: 0,
-                w: 20,
-                h: canvas.height,
-                type: 'wall',
-                color: bioma.wall
-            });
-            gameObjects.push({
-                x: CONFIG.worldWidth,
-                y: 0,
-                w: 20,
-                h: canvas.height,
-                type: 'wall',
-                color: bioma.wall
-            });
+            gameObjects.push({ x: 0, y: groundY, w: CONFIG.worldWidth, h: 60, type: 'ground', color: bioma.ground });
+            gameObjects.push({ x: -20, y: 0, w: 20, h: canvas.height, type: 'wall', color: bioma.wall });
+            gameObjects.push({ x: CONFIG.worldWidth, y: 0, w: 20, h: canvas.height, type: 'wall', color: bioma.wall });
 
             for (let i = 0; i < 8; i++) {
                 const x = 80 + Math.random() * (CONFIG.worldWidth - 160);
                 const treeHeight = 45 + Math.random() * 45;
-                gameObjects.push({
-                    x: x,
-                    y: groundY - treeHeight,
-                    w: 14,
-                    h: treeHeight,
-                    type: 'tree',
-                    color: bioma.tree
-                });
-                gameObjects.push({
-                    x: x - 18,
-                    y: groundY - treeHeight - 18,
-                    w: 40,
-                    h: 22,
-                    type: 'treeTop',
-                    color: bioma.tree
-                });
+                gameObjects.push({ x, y: groundY - treeHeight, w: 14, h: treeHeight, type: 'tree', color: bioma
+                    .tree });
+                gameObjects.push({ x: x - 18, y: groundY - treeHeight - 18, w: 40, h: 22, type: 'treeTop',
+                    color: bioma.tree });
             }
 
-            const obstacleTypes = ['mushroom', 'plant', 'spike', 'question', 'pipe', 'brick', 'star', 'fireflower', 'goomba',
-                'koopa'
-            ];
+            const obstacleTypes = ['mushroom', 'plant', 'spike', 'question', 'pipe', 'brick', 'star', 'fireflower'];
             const obsCount = 3 + Math.floor(phase / 2);
             for (let i = 0; i < Math.min(obsCount, 8); i++) {
                 let x, y, valid;
@@ -1876,17 +1200,12 @@
                     if (Math.abs(x - 100) < 60) valid = false;
                     if (Math.abs(x - (CONFIG.worldWidth - 80)) < 60) valid = false;
                     for (let obs of obstacles) {
-                        if (Math.abs(x - obs.x) < 50 && Math.abs(y - obs.y) < 50) {
-                            valid = false;
-                            break;
-                        }
+                        if (Math.abs(x - obs.x) < 50 && Math.abs(y - obs.y) < 50) { valid = false; break; }
                     }
                     attempts++;
                     if (attempts > 50) break;
                 } while (!valid);
-                const type = obstacleTypes[Math.floor(Math.random() * obstacleTypes.length)];
-                const obs = createObstacle(x, y, type);
-                obstacles.push(obs);
+                obstacles.push(createObstacle(x, y, obstacleTypes[Math.floor(Math.random() * obstacleTypes.length)]));
             }
 
             const itemsCount = Math.min(CONFIG.itemsPerPhase + Math.floor((phase - 1) / 3), 5);
@@ -1898,17 +1217,13 @@
                     y = groundY - 30 - Math.random() * 20;
                     valid = true;
                     for (let obs of obstacles) {
-                        if (Math.abs(x - obs.x) < 40 && Math.abs(y - obs.y) < 40) {
-                            valid = false;
-                            break;
-                        }
+                        if (Math.abs(x - obs.x) < 40 && Math.abs(y - obs.y) < 40) { valid = false; break; }
                     }
                     if (Math.abs(x - 100) < 50) valid = false;
                     attempts++;
                     if (attempts > 50) break;
                 } while (!valid);
-                const item = createItem(x, y);
-                items.push(item);
+                items.push(createItem(x, y));
             }
 
             let keyX, keyY, keyValid;
@@ -1918,22 +1233,15 @@
                 keyY = groundY - 30 - Math.random() * 20;
                 keyValid = true;
                 for (let obs of obstacles) {
-                    if (Math.abs(keyX - obs.x) < 40 && Math.abs(keyY - obs.y) < 40) {
-                        keyValid = false;
-                        break;
-                    }
+                    if (Math.abs(keyX - obs.x) < 40 && Math.abs(keyY - obs.y) < 40) { keyValid = false; break; }
                 }
                 if (Math.abs(keyX - 100) < 50) keyValid = false;
                 keyAttempts++;
                 if (keyAttempts > 50) break;
             } while (!keyValid);
-            const key = createKey(keyX, keyY);
-            keys.push(key);
+            keys.push(createKey(keyX, keyY));
 
-            const doorX = CONFIG.worldWidth - 80;
-            const doorY = groundY - 50;
-            const door = createDoor(doorX, doorY);
-            doors.push(door);
+            doors.push(createDoor(CONFIG.worldWidth - 80, groundY - 50));
 
             const enemyCount = CONFIG.enemyBaseCount + Math.floor((phase - 1) * 0.7);
             for (let i = 0; i < Math.min(enemyCount, 10); i++) {
@@ -1944,17 +1252,13 @@
                     y = groundY - 38;
                     valid = true;
                     for (let obs of obstacles) {
-                        if (Math.abs(x - obs.x) < 50 && Math.abs(y - obs.y) < 50) {
-                            valid = false;
-                            break;
-                        }
+                        if (Math.abs(x - obs.x) < 50 && Math.abs(y - obs.y) < 50) { valid = false; break; }
                     }
                     if (Math.abs(x - 100) < 50) valid = false;
                     attempts++;
                     if (attempts > 50) break;
                 } while (!valid);
-                const enemy = createEnemy(x, y, phase);
-                enemies.push(enemy);
+                enemies.push(createEnemy(x, y, phase));
             }
 
             player.x = 100;
@@ -1980,56 +1284,35 @@
             player.doubleShot = inventory.includes('bow') ? true : false;
 
             playerCoins = getPlayerCoins(currentPlayer.name);
-
             updateHUD();
             showMessage(`🌍 ${bioma.name} - Fase ${phase}`);
         }
 
-        // ============================================================
-        //  FÍSICA E COLISÕES
-        // ============================================================
         function rectCollide(a, b) {
-            return a.x < b.x + b.w && a.x + a.w > b.x &&
-                a.y < b.y + b.h && a.y + a.h > b.y;
+            return a.x < b.x + b.w && a.x + a.w > b.x && a.y < b.y + b.h && a.y + a.h > b.y;
         }
 
-        function dist(x1, y1, x2, y2) {
-            return Math.sqrt((x1 - x2) ** 2 + (y1 - y2) ** 2);
-        }
+        function dist(x1, y1, x2, y2) { return Math.sqrt((x1 - x2) ** 2 + (y1 - y2) ** 2); }
 
         function updatePhysics() {
             player.vy += CONFIG.gravity;
-
             let moveX = 0;
             if (keys.d) moveX = 1;
             if (keys.a) moveX = -1;
             if (joyData.active) moveX = joyData.x;
 
-            if (gamepadData.active) {
-                const deadzone = 0.15;
-                let gx = gamepadData.axes.leftX;
-                let gy = gamepadData.axes.leftY;
-                const mag = Math.sqrt(gx * gx + gy * gy);
-                if (mag > deadzone) {
-                    moveX = gx;
-                }
-            }
-
             const speed = CONFIG.moveSpeed + player.bonusSpeed;
             player.vx = moveX * speed;
-
             if (moveX > 0) player.facing = 1;
             if (moveX < 0) player.facing = -1;
 
             const newX = player.x + player.vx;
             player.x = newX;
-
             if (player.x < 0) player.x = 0;
             if (player.x + player.w > CONFIG.worldWidth) player.x = CONFIG.worldWidth - player.w;
 
             const newY = player.y + player.vy;
             player.y = newY;
-
             const groundY = canvas.height - 60;
             if (player.y + player.h > groundY) {
                 player.y = groundY - player.h;
@@ -2040,56 +1323,41 @@
             if (Math.abs(player.vx) > 0.5) {
                 player.walkCycle += 0.1;
                 player.animTimer += 1 / 60;
-                if (player.animTimer > 0.12) {
-                    player.animTimer = 0;
-                    player.animFrame = (player.animFrame + 1) % 4;
-                }
-            } else {
-                player.walkCycle = 0;
+                if (player.animTimer > 0.12) { player.animTimer = 0;
+                    player.animFrame = (player.animFrame + 1) % 4; }
+            } else { player.walkCycle = 0;
                 player.animFrame = 0;
-                player.animTimer = 0;
-            }
+                player.animTimer = 0; }
         }
 
-        // ============================================================
-        //  UPDATE INIMIGOS
-        // ============================================================
         function updateEnemies() {
             enemies.forEach(enemy => {
                 if (!enemy.alive) return;
-
-                const dx = player.x - enemy.x;
-                const dy = player.y - enemy.y;
+                const dx = player.x - enemy.x,
+                    dy = player.y - enemy.y;
                 const dist2 = Math.sqrt(dx * dx + dy * dy);
-
                 if (dist2 > 50) {
                     const speed = enemy.speed;
                     enemy.vx = (dx / dist2) * speed;
                     enemy.x += enemy.vx;
                     enemy.facing = enemy.vx > 0 ? 1 : -1;
-                } else {
-                    enemy.vx = 0;
-                }
-
+                } else { enemy.vx = 0; }
                 if (enemy.x < 0) enemy.x = 0;
                 if (enemy.x + enemy.w > CONFIG.worldWidth) enemy.x = CONFIG.worldWidth - enemy.w;
-
                 if (dist2 < 40 && player.isAlive) {
                     if (enemy.attackCooldown <= 0) {
                         if (player.shieldCharges > 0) {
                             player.shieldCharges--;
                             createParticle(player.x + player.w / 2, player.y + player.h / 2, '#00ff88', 20);
-                            showMessage('🛡️ Escudo protegeu!');
+                            showMessage('🛡️ Escudo!');
                         } else {
                             const damage = Math.max(0, enemy.damage - player.bonusDefense);
                             player.health -= damage;
                             createParticle(player.x + player.w / 2, player.y + player.h / 2, '#ff0000', 10);
                             updateHUD();
-                            if (player.health <= 0) {
-                                player.health = 0;
+                            if (player.health <= 0) { player.health = 0;
                                 player.isAlive = false;
-                                showGameOver();
-                            }
+                                showGameOver(); }
                         }
                         enemy.attackCooldown = 40;
                     }
@@ -2098,18 +1366,13 @@
             });
         }
 
-        // ============================================================
-        //  UPDATE PROJÉTEIS
-        // ============================================================
         function updateBullets() {
             for (let i = bullets.length - 1; i >= 0; i--) {
                 const b = bullets[i];
                 b.x += b.vx;
                 b.y += b.vy;
                 b.life--;
-
                 let hit = false;
-
                 for (let enemy of enemies) {
                     if (!enemy.alive) continue;
                     if (rectCollide(b, enemy)) {
@@ -2123,31 +1386,24 @@
                             createParticle(enemy.x + enemy.w / 2, enemy.y + enemy.h / 2, '#ff4400', 25);
                             updateHUD();
                             renderRanking();
-                            showMessage('🧟 Infectado eliminado! +3🪙');
+                            showMessage('🧟 Eliminado! +3🪙');
                         }
                         hit = true;
                         break;
                     }
                 }
-
-                if (hit || b.life <= 0 || b.x < 0 || b.x > CONFIG.worldWidth) {
-                    bullets.splice(i, 1);
-                }
+                if (hit || b.life <= 0 || b.x < 0 || b.x > CONFIG.worldWidth) { bullets.splice(i, 1); }
             }
         }
 
-        // ============================================================
-        //  UPDATE MÍSSEIS
-        // ============================================================
         function updateMissiles() {
             for (let i = missiles.length - 1; i >= 0; i--) {
                 const m = missiles[i];
                 m.life--;
-
                 let target = m.target;
                 if (!target || !target.alive) {
-                    let closest = null;
-                    let closestDist = Infinity;
+                    let closest = null,
+                        closestDist = Infinity;
                     enemies.forEach(enemy => {
                         if (!enemy.alive) return;
                         const d = dist(m.x, m.y, enemy.x, enemy.y);
@@ -2157,19 +1413,14 @@
                     target = closest;
                     m.target = target;
                 }
-
                 if (target && target.alive) {
-                    const dx = target.x - m.x;
-                    const dy = target.y - m.y;
+                    const dx = target.x - m.x,
+                        dy = target.y - m.y;
                     const d = Math.sqrt(dx * dx + dy * dy);
-                    if (d > 0) {
-                        m.x += (dx / d) * m.speed;
-                        m.y += (dy / d) * m.speed;
-                    }
-
+                    if (d > 0) { m.x += (dx / d) * m.speed;
+                        m.y += (dy / d) * m.speed; }
                     m.trail.push({ x: m.x, y: m.y, life: 20 });
                     if (m.trail.length > 15) m.trail.shift();
-
                     if (d < 30) {
                         target.health -= m.damage;
                         createParticle(m.x, m.y, '#ff4400', 30);
@@ -2181,46 +1432,32 @@
                             createParticle(target.x + target.w / 2, target.y + target.h / 2, '#ff4400', 30);
                             updateHUD();
                             renderRanking();
-                            showMessage('🧟 Infectado destruído! +5🪙');
+                            showMessage('🧟 Destruído! +5🪙');
                         }
                         missiles.splice(i, 1);
                         continue;
                     }
-                } else {
-                    m.x += m.speed * player.facing;
-                }
-
+                } else { m.x += m.speed * player.facing; }
                 m.trail = m.trail.filter(t => t.life > 0);
                 m.trail.forEach(t => t.life--);
-
-                if (m.life <= 0 || m.x < 0 || m.x > CONFIG.worldWidth) {
-                    missiles.splice(i, 1);
-                }
+                if (m.life <= 0 || m.x < 0 || m.x > CONFIG.worldWidth) { missiles.splice(i, 1); }
             }
         }
 
-        // ============================================================
-        //  UPDATE PODER
-        // ============================================================
         function updatePower() {
             if (powerCooldown > 0) powerCooldown -= 1 / 60;
             if (powerActive) {
                 powerTimer -= 1 / 60;
-                if (powerTimer <= 0) {
-                    powerActive = false;
-                    updateHUD();
-                }
+                if (powerTimer <= 0) { powerActive = false;
+                    updateHUD(); }
             }
-
             for (let i = powerParticles.length - 1; i >= 0; i--) {
                 const p = powerParticles[i];
                 p.x += p.vx;
                 p.y += p.vy;
                 p.vy += 0.05;
                 p.life--;
-                if (p.life <= 0) {
-                    powerParticles.splice(i, 1);
-                }
+                if (p.life <= 0) powerParticles.splice(i, 1);
             }
         }
 
@@ -2229,18 +1466,12 @@
             powerActive = true;
             powerTimer = CONFIG.powerDuration;
             powerCooldown = CONFIG.powerCooldown;
-
-            const px = player.x + player.w / 2;
-            const py = player.y + player.h / 2;
-            createPowerWave(px, py, player.facing);
-
+            createPowerWave(player.x + player.w / 2, player.y + player.h / 2);
             updateHUD();
         }
 
-        // ============================================================
-        //  CHECK ITENS
-        // ============================================================
         function checkItemCollisions() {
+            const pPos = player.mesh.position;
             items.forEach(item => {
                 if (!item.collected && rectCollide(player, item)) {
                     item.collected = true;
@@ -2253,7 +1484,6 @@
                     showMessage('💰 Suprimentos! +10🪙');
                 }
             });
-
             keys.forEach(key => {
                 if (!key.collected && rectCollide(player, key)) {
                     key.collected = true;
@@ -2263,11 +1493,12 @@
                     showMessage('🗝️ Chave!');
                 }
             });
-
             doors.forEach(door => {
                 if (!door.opened && rectCollide(player, door)) {
                     if (player.keys > 0) {
                         door.opened = true;
+                        door.scale.x = 0.05;
+                        door.scale.z = 0.05;
                         player.keys--;
                         updateHUD();
                         showMessage('🚪 Saída!');
@@ -2278,39 +1509,28 @@
                             playerCoins = getPlayerCoins(currentPlayer.name);
                             renderRanking();
                             setTimeout(() => nextPhase(), 1000);
-                        } else {
-                            showMessage(`💰 Colete mais (${total}/${needed})`);
-                        }
-                    } else {
-                        showMessage('🗝️ Precisa de chave!');
-                    }
+                        } else { showMessage(`💰 Colete mais (${total}/${needed})`); }
+                    } else { showMessage('🗝️ Precisa de chave!'); }
                 }
             });
         }
 
-        // ============================================================
-        //  TIRO E MÍSSIL
-        // ============================================================
         function fireMissile() {
             if (!player.isAlive) return;
             if (player.missiles <= 0) { showMessage('❌ Sem mísseis!'); return; }
             if (player.missileCooldown > 0) { showMessage(`⏳ ${Math.ceil(player.missileCooldown)}s`); return; }
-
-            let closest = null;
-            let closestDist = Infinity;
+            let closest = null,
+                closestDist = Infinity;
             enemies.forEach(enemy => {
                 if (!enemy.alive) return;
                 const d = dist(player.x, player.y, enemy.x, enemy.y);
                 if (d < closestDist) { closestDist = d;
                     closest = enemy; }
             });
-
             if (!closest) { showMessage('❌ Nenhum alvo!'); return; }
-
             player.missiles--;
             player.missileCooldown = CONFIG.missileCooldown;
-            const missile = createMissile(player.x + player.w / 2, player.y + player.h / 2, closest);
-            missiles.push(missile);
+            missiles.push(createMissile(player.x + player.w / 2, player.y + player.h / 2, closest));
             updateHUD();
             showMessage('🎯 Míssil lançado!');
         }
@@ -2318,28 +1538,20 @@
         function shoot() {
             if (!player.isAlive || player.shootCooldown > 0) return;
             player.shootCooldown = CONFIG.shootCooldown;
-
             const damage = CONFIG.bulletDamage + player.bonusDamage;
             const bx = player.x + (player.facing > 0 ? player.w : -8);
             const by = player.y + 12;
             const bvx = player.facing * CONFIG.bulletSpeed;
-            const bvy = 0;
-
             if (player.doubleShot) {
-                const bullet1 = createBullet(bx, by - 5, bvx, bvy, damage);
-                const bullet2 = createBullet(bx, by + 5, bvx, bvy, damage);
-                bullets.push(bullet1, bullet2);
+                bullets.push(createBullet(bx, by - 5, bvx, 0, damage));
+                bullets.push(createBullet(bx, by + 5, bvx, 0, damage));
                 createParticle(bx, by, '#ff6b35', 8);
             } else {
-                const bullet = createBullet(bx, by, bvx, bvy, damage);
-                bullets.push(bullet);
+                bullets.push(createBullet(bx, by, bvx, 0, damage));
                 createParticle(bx, by, '#ff6b35', 5);
             }
         }
 
-        // ============================================================
-        //  HUD
-        // ============================================================
         function updateHUD() {
             document.getElementById('healthText').textContent = Math.max(0, Math.round(player.health));
             document.getElementById('healthFill').style.width = `${Math.max(0, (player.health / player.maxHealth) * 100)}%`;
@@ -2351,7 +1563,6 @@
             document.getElementById('killsText').textContent = player.kills || 0;
             document.getElementById('missileText').textContent = player.missiles;
             document.getElementById('coinsText').textContent = playerCoins || 0;
-
             const powerEl = document.getElementById('powerText');
             if (powerCooldown > 0) {
                 powerEl.textContent = `${Math.ceil(powerCooldown)}s`;
@@ -2390,32 +1601,18 @@
                 restartGame(); }, 2500);
         }
 
-        function showVictory() {
-            document.getElementById('victory').style.display = 'block';
-            setTimeout(() => {
-                document.getElementById('shopScreen').style.display = 'flex';
-                renderShop();
-            }, 1500);
-        }
+        function showVictory() { document.getElementById('victory').style.display = 'block'; }
 
-        // ============================================================
-        //  GERENCIAMENTO FASES
-        // ============================================================
         function nextPhase() {
-            if (player.phase >= CONFIG.totalPhases) {
-                showVictory();
-                return;
-            }
+            if (player.phase >= CONFIG.totalPhases) { showVictory(); return; }
             player.phase++;
             if (currentPlayer) {
                 currentPlayer.phase = player.phase;
                 const allPlayers = getPlayers();
                 const idx = allPlayers.findIndex(p => p.name === currentPlayer.name);
-                if (idx !== -1) {
-                    allPlayers[idx].phase = player.phase;
+                if (idx !== -1) { allPlayers[idx].phase = player.phase;
                     allPlayers[idx].kills = player.kills;
-                    savePlayers(allPlayers);
-                }
+                    savePlayers(allPlayers); }
                 renderRanking();
             }
             player.health = CONFIG.maxHealth;
@@ -2445,11 +1642,9 @@
                 currentPlayer.kills = 0;
                 const allPlayers = getPlayers();
                 const idx = allPlayers.findIndex(p => p.name === currentPlayer.name);
-                if (idx !== -1) {
-                    allPlayers[idx].phase = 1;
+                if (idx !== -1) { allPlayers[idx].phase = 1;
                     allPlayers[idx].kills = 0;
-                    savePlayers(allPlayers);
-                }
+                    savePlayers(allPlayers); }
                 renderRanking();
             }
             createPhase(1);
@@ -2457,39 +1652,8 @@
             document.getElementById('game-over').style.display = 'none';
         }
 
-        function restartGameAfterShop() {
-            player.phase = 1;
-            player.health = CONFIG.maxHealth;
-            player.isAlive = true;
-            player.items = 0;
-            player.keys = 0;
-            player.missiles = CONFIG.maxMissiles;
-            player.missileCooldown = 0;
-            player.shootCooldown = 0;
-            powerCooldown = 0;
-            powerActive = false;
-            if (currentPlayer) {
-                currentPlayer.phase = 1;
-                const allPlayers = getPlayers();
-                const idx = allPlayers.findIndex(p => p.name === currentPlayer.name);
-                if (idx !== -1) {
-                    allPlayers[idx].phase = 1;
-                    savePlayers(allPlayers);
-                }
-                renderRanking();
-            }
-            playerCoins = getPlayerCoins(currentPlayer.name);
-            createPhase(1);
-            updateHUD();
-            document.getElementById('victory').style.display = 'none';
-        }
-
-        // ============================================================
-        //  RENDERIZAÇÃO (SIMPLIFICADA)
-        // ============================================================
         function render() {
             const bioma = BIOMAS[currentBiomaIndex % BIOMAS.length];
-
             const grad = ctx.createLinearGradient(0, 0, 0, canvas.height);
             grad.addColorStop(0, bioma.skyGrad[0]);
             grad.addColorStop(1, bioma.skyGrad[1] || bioma.sky);
@@ -2501,16 +1665,10 @@
             ctx.save();
             ctx.translate(-cameraX, 0);
 
-            // Chão e objetos
             gameObjects.forEach(obj => {
                 if (obj.type === 'ground') {
                     ctx.fillStyle = obj.color || bioma.ground;
                     ctx.fillRect(obj.x, obj.y, obj.w, obj.h);
-                    ctx.fillStyle = bioma.grass;
-                    for (let i = 0; i < obj.w; i += 6) {
-                        const grassX = obj.x + i + Math.sin(i * 0.5 + Date.now() * 0.001) * 3;
-                        ctx.fillRect(grassX, obj.y - 4, 2, 6);
-                    }
                 }
                 if (obj.type === 'wall') {
                     ctx.fillStyle = obj.color || bioma.wall;
@@ -2530,14 +1688,12 @@
                 }
             });
 
-            // Obstáculos
             obstacles.forEach(obs => {
                 if (!obs.active) return;
                 ctx.save();
                 ctx.translate(obs.x + obs.w / 2, obs.y + obs.h / 2);
                 obs.animTimer += 0.02;
                 const bob = Math.sin(obs.animTimer + obs.bobPhase) * 2;
-
                 if (obs.type === 'mushroom') {
                     ctx.fillStyle = '#ff4444';
                     ctx.shadowColor = '#ff4444';
@@ -2663,71 +1819,10 @@
                     ctx.fill();
                     ctx.fillStyle = '#44cc44';
                     ctx.fillRect(-3, 6 + bob, 6, 12);
-                } else if (obs.type === 'goomba') {
-                    ctx.fillStyle = '#8B4513';
-                    ctx.shadowColor = '#8B4513';
-                    ctx.shadowBlur = 5;
-                    ctx.beginPath();
-                    ctx.arc(0, -2 + bob, 13, 0, Math.PI * 2);
-                    ctx.fill();
-                    ctx.fillStyle = '#6B3410';
-                    ctx.beginPath();
-                    ctx.arc(0, -4 + bob, 11, 0, Math.PI * 2);
-                    ctx.fill();
-                    ctx.fillStyle = '#ffffff';
-                    ctx.shadowBlur = 0;
-                    ctx.beginPath();
-                    ctx.arc(-5, -5 + bob, 4, 0, Math.PI * 2);
-                    ctx.fill();
-                    ctx.beginPath();
-                    ctx.arc(5, -5 + bob, 4, 0, Math.PI * 2);
-                    ctx.fill();
-                    ctx.fillStyle = '#222';
-                    ctx.beginPath();
-                    ctx.arc(-5, -4 + bob, 2, 0, Math.PI * 2);
-                    ctx.fill();
-                    ctx.beginPath();
-                    ctx.arc(5, -4 + bob, 2, 0, Math.PI * 2);
-                    ctx.fill();
-                    ctx.fillStyle = '#222';
-                    ctx.fillRect(-4, 2 + bob, 8, 2);
-                } else if (obs.type === 'koopa') {
-                    ctx.fillStyle = '#44cc44';
-                    ctx.shadowColor = '#44cc44';
-                    ctx.shadowBlur = 5;
-                    ctx.beginPath();
-                    ctx.arc(0, 0 + bob, 12, 0, Math.PI * 2);
-                    ctx.fill();
-                    ctx.fillStyle = '#44dd44';
-                    ctx.beginPath();
-                    ctx.arc(0, -8 + bob, 9, 0, Math.PI * 2);
-                    ctx.fill();
-                    ctx.fillStyle = '#ffffff';
-                    ctx.shadowBlur = 0;
-                    ctx.beginPath();
-                    ctx.arc(-4, -10 + bob, 3.5, 0, Math.PI * 2);
-                    ctx.fill();
-                    ctx.beginPath();
-                    ctx.arc(4, -10 + bob, 3.5, 0, Math.PI * 2);
-                    ctx.fill();
-                    ctx.fillStyle = '#222';
-                    ctx.beginPath();
-                    ctx.arc(-4, -9 + bob, 2, 0, Math.PI * 2);
-                    ctx.fill();
-                    ctx.beginPath();
-                    ctx.arc(4, -9 + bob, 2, 0, Math.PI * 2);
-                    ctx.fill();
-                    ctx.fillStyle = '#222';
-                    ctx.fillRect(-3, -4 + bob, 6, 2);
-                    ctx.fillStyle = '#44bb44';
-                    ctx.fillRect(-8, 8 + bob, 6, 4);
-                    ctx.fillRect(2, 8 + bob, 6, 4);
                 }
-
                 ctx.restore();
             });
 
-            // Itens
             items.forEach(item => {
                 if (item.collected) return;
                 const bob = Math.sin(Date.now() * 0.002 + item.bobPhase) * 3;
@@ -2746,7 +1841,6 @@
                 ctx.restore();
             });
 
-            // Chave
             keys.forEach(key => {
                 if (key.collected) return;
                 const bob = Math.sin(Date.now() * 0.002 + key.bobPhase) * 3;
@@ -2765,7 +1859,6 @@
                 ctx.restore();
             });
 
-            // Porta
             doors.forEach(door => {
                 ctx.save();
                 ctx.translate(door.x, door.y);
@@ -2794,40 +1887,25 @@
                 ctx.restore();
             });
 
-            // Inimigos
             enemies.forEach(enemy => {
                 if (!enemy.alive) return;
                 ctx.save();
                 ctx.translate(enemy.x + enemy.w / 2, enemy.y + enemy.h);
-
                 ctx.fillStyle = 'rgba(0,0,0,0.2)';
                 ctx.beginPath();
                 ctx.ellipse(0, 3, 18, 5, 0, 0, Math.PI * 2);
                 ctx.fill();
-
-                const bodyGrad = ctx.createLinearGradient(0, -34, 0, 0);
-                bodyGrad.addColorStop(0, '#2a4a2a');
-                bodyGrad.addColorStop(0.5, '#3a5a3a');
-                bodyGrad.addColorStop(1, '#2a3a2a');
-                ctx.fillStyle = bodyGrad;
+                ctx.fillStyle = '#2a3a2a';
                 ctx.shadowColor = 'rgba(0,0,0,0.15)';
                 ctx.shadowBlur = 4;
                 ctx.shadowOffsetY = 2;
-                ctx.beginPath();
-                ctx.roundRect(-14, -34, 28, 30, 4);
-                ctx.fill();
+                ctx.fillRect(-14, -34, 28, 30);
                 ctx.shadowBlur = 0;
                 ctx.shadowOffsetY = 0;
-
-                const headGrad = ctx.createRadialGradient(0, -28, 2, 0, -28, 14);
-                headGrad.addColorStop(0, '#5a7a5a');
-                headGrad.addColorStop(0.6, '#4a6a4a');
-                headGrad.addColorStop(1, '#3a5a3a');
-                ctx.fillStyle = headGrad;
+                ctx.fillStyle = '#3a4a3a';
                 ctx.beginPath();
                 ctx.arc(0, -28, 13, 0, Math.PI * 2);
                 ctx.fill();
-
                 ctx.shadowColor = '#ff0000';
                 ctx.shadowBlur = 15;
                 ctx.fillStyle = '#ff0000';
@@ -2838,45 +1916,23 @@
                 ctx.arc(7, -31, 3.5, 0, Math.PI * 2);
                 ctx.fill();
                 ctx.shadowBlur = 0;
-
                 ctx.fillStyle = '#1a0a0a';
                 ctx.beginPath();
                 ctx.arc(0, -22, 7, 0, Math.PI);
                 ctx.fill();
-
-                ctx.fillStyle = '#3a5a3a';
+                ctx.fillStyle = '#2a3a2a';
                 const armWave = Math.sin(Date.now() * 0.003 + enemy.x) * 4;
                 ctx.shadowColor = 'rgba(0,0,0,0.1)';
                 ctx.shadowBlur = 3;
-                ctx.save();
-                ctx.translate(-18, -24 + armWave);
-                ctx.rotate(0.3 + Math.sin(Date.now() * 0.002 + enemy.x) * 0.1);
-                ctx.fillRect(-3, 0, 6, 18);
-                ctx.fillStyle = '#4a6a4a';
-                ctx.beginPath();
-                ctx.arc(0, 18, 4, 0, Math.PI * 2);
-                ctx.fill();
-                ctx.restore();
-                ctx.fillStyle = '#3a5a3a';
-                ctx.save();
-                ctx.translate(18, -24 - armWave);
-                ctx.rotate(-0.3 - Math.sin(Date.now() * 0.002 + enemy.x) * 0.1);
-                ctx.fillRect(-3, 0, 6, 18);
-                ctx.fillStyle = '#4a6a4a';
-                ctx.beginPath();
-                ctx.arc(0, 18, 4, 0, Math.PI * 2);
-                ctx.fill();
-                ctx.restore();
+                ctx.fillRect(-18, -24 + armWave, 6, 16);
+                ctx.fillRect(12, -24 - armWave, 6, 16);
                 ctx.shadowBlur = 0;
-
                 ctx.fillStyle = '#2a3a2a';
                 ctx.fillRect(-10, -4, 6, 10);
                 ctx.fillRect(4, -4, 6, 10);
-
                 ctx.restore();
             });
 
-            // Projéteis
             bullets.forEach(b => {
                 ctx.fillStyle = '#ff6b35';
                 ctx.shadowColor = '#ff6b35';
@@ -2887,7 +1943,6 @@
                 ctx.shadowBlur = 0;
             });
 
-            // Mísseis
             missiles.forEach(m => {
                 m.trail.forEach(t => {
                     ctx.fillStyle = `rgba(255,68,0,${t.life / 20 * 0.5})`;
@@ -2908,7 +1963,6 @@
                 ctx.fill();
             });
 
-            // Partículas
             particles.forEach(p => {
                 const alpha = p.life / p.maxLife;
                 ctx.globalAlpha = alpha;
@@ -2933,7 +1987,6 @@
             // Jogador
             ctx.save();
             ctx.translate(player.x + player.w / 2, player.y + player.h);
-
             ctx.fillStyle = 'rgba(0,0,0,0.2)';
             ctx.beginPath();
             ctx.ellipse(0, 3, 17, 5, 0, 0, Math.PI * 2);
@@ -2952,26 +2005,20 @@
             ctx.shadowBlur = 0;
             ctx.shadowOffsetY = 0;
 
-            const bodyGrad2 = ctx.createLinearGradient(0, -28, 0, 0);
-            bodyGrad2.addColorStop(0, '#4a7aee');
-            bodyGrad2.addColorStop(0.5, '#3a6ade');
-            bodyGrad2.addColorStop(1, '#2a5ace');
-            ctx.fillStyle = bodyGrad2;
+            ctx.fillStyle = '#4a7aee';
             ctx.shadowColor = 'rgba(0,0,0,0.1)';
             ctx.shadowBlur = 4;
             ctx.shadowOffsetY = 2;
-            ctx.beginPath();
-            ctx.roundRect(-13, -28, 26, 22, 4);
-            ctx.fill();
+            ctx.fillRect(-13, -28, 26, 22);
             ctx.shadowBlur = 0;
             ctx.shadowOffsetY = 0;
 
-            ctx.fillStyle = 'rgba(255,255,255,0.05)';
-            ctx.fillRect(-8, -20, 16, 1);
-            ctx.fillRect(-10, -14, 20, 1);
-            ctx.fillStyle = 'rgba(0,0,0,0.1)';
-            ctx.fillRect(-10, -18, 6, 4);
-            ctx.fillRect(4, -18, 6, 4);
+            ctx.fillStyle = '#3a2a1a';
+            ctx.fillRect(-11, -26, 22, 14);
+            ctx.fillStyle = '#ffd700';
+            ctx.fillRect(-2, -22, 4, 2);
+            ctx.fillRect(-2, -18, 4, 2);
+            ctx.fillRect(-2, -14, 4, 2);
 
             ctx.fillStyle = '#2a1a0a';
             ctx.fillRect(-13, -10, 26, 3);
@@ -2981,61 +2028,14 @@
             ctx.fillStyle = '#f5d0b8';
             ctx.shadowColor = 'rgba(0,0,0,0.1)';
             ctx.shadowBlur = 2;
-            ctx.save();
-            ctx.translate(-15, -20);
-            ctx.rotate(0.1 + Math.sin(player.walkCycle * 1.5) * 0.05);
-            ctx.fillRect(-3, 0, 6, 14);
-            ctx.beginPath();
-            ctx.arc(0, 14, 4, 0, Math.PI * 2);
-            ctx.fill();
-            ctx.restore();
-            ctx.save();
-            ctx.translate(15, -20);
-            ctx.rotate(-0.1 - Math.sin(player.walkCycle * 1.5) * 0.05);
-            ctx.fillRect(-3, 0, 6, 14);
-            ctx.beginPath();
-            ctx.arc(0, 14, 4, 0, Math.PI * 2);
-            ctx.fill();
-            ctx.restore();
+            ctx.fillRect(-15, -20, 6, 14);
+            ctx.fillRect(9, -20, 6, 14);
             ctx.shadowBlur = 0;
 
             ctx.fillStyle = '#f5d0b8';
             ctx.beginPath();
-            ctx.arc(15, -6, 4, 0, Math.PI * 2);
-            ctx.fill();
-
-            ctx.save();
-            ctx.translate(20, -8);
-            ctx.rotate(0.2);
-            ctx.fillStyle = '#333344';
-            ctx.shadowColor = 'rgba(0,0,0,0.2)';
-            ctx.shadowBlur = 3;
-            ctx.fillRect(0, -3, 14, 6);
-            ctx.fillStyle = '#444455';
-            ctx.fillRect(12, -2.5, 6, 5);
-            ctx.fillStyle = '#555566';
-            ctx.beginPath();
-            ctx.arc(0, 0, 4, 0, Math.PI * 2);
-            ctx.fill();
-            ctx.fillStyle = '#222233';
-            ctx.fillRect(0, 3, 2, 4);
-            ctx.fillStyle = '#8B7355';
-            ctx.fillRect(-2, 4, 6, 8);
-            ctx.fillRect(-2, 12, 6, 4);
-            ctx.shadowBlur = 0;
-            ctx.restore();
-
-            const headGrad2 = ctx.createRadialGradient(0, -28, 2, 0, -28, 13);
-            headGrad2.addColorStop(0, '#f5e0d0');
-            headGrad2.addColorStop(0.6, '#f5d0b8');
-            headGrad2.addColorStop(1, '#e5c0a8');
-            ctx.fillStyle = headGrad2;
-            ctx.shadowColor = 'rgba(0,0,0,0.1)';
-            ctx.shadowBlur = 4;
-            ctx.beginPath();
             ctx.arc(0, -32, 13, 0, Math.PI * 2);
             ctx.fill();
-            ctx.shadowBlur = 0;
 
             ctx.fillStyle = '#3a2a1a';
             ctx.shadowColor = 'rgba(0,0,0,0.15)';
@@ -3050,26 +2050,14 @@
             ctx.shadowColor = '#44aaff';
             ctx.shadowBlur = 4;
             const eyeX2 = player.facing > 0 ? 4 : -8;
-            ctx.beginPath();
-            ctx.ellipse(eyeX2, -33, 3.5, 4, 0, 0, Math.PI * 2);
-            ctx.fill();
-            ctx.beginPath();
-            ctx.ellipse(eyeX2 + 8, -33, 3.5, 4, 0, 0, Math.PI * 2);
-            ctx.fill();
+            ctx.fillRect(eyeX2, -33, 4, 4);
+            ctx.fillRect(eyeX2 + 8, -33, 4, 4);
             ctx.shadowBlur = 0;
 
             ctx.fillStyle = '#222';
             const pupilX2 = player.facing > 0 ? 2 : -1;
-            ctx.beginPath();
-            ctx.arc(eyeX2 + pupilX2, -32, 1.8, 0, Math.PI * 2);
-            ctx.fill();
-            ctx.beginPath();
-            ctx.arc(eyeX2 + 8 + pupilX2, -32, 1.8, 0, Math.PI * 2);
-            ctx.fill();
-
-            ctx.fillStyle = '#2a1a0a';
-            ctx.fillRect(eyeX2 - 2, -37, 6, 1.5);
-            ctx.fillRect(eyeX2 + 6, -37, 6, 1.5);
+            ctx.fillRect(eyeX2 + pupilX2, -32, 2, 2);
+            ctx.fillRect(eyeX2 + 8 + pupilX2, -32, 2, 2);
 
             ctx.fillStyle = '#cc8866';
             ctx.beginPath();
@@ -3081,11 +2069,6 @@
                 ctx.lineWidth = 3;
                 ctx.beginPath();
                 ctx.arc(0, -18, 26, 0, Math.PI * 2);
-                ctx.stroke();
-                ctx.strokeStyle = 'rgba(0,255,136,0.2)';
-                ctx.lineWidth = 2;
-                ctx.beginPath();
-                ctx.arc(0, -18, 30, 0, Math.PI * 2);
                 ctx.stroke();
                 ctx.fillStyle = 'rgba(0,255,136,0.06)';
                 ctx.beginPath();
@@ -3115,187 +2098,6 @@
             ctx.restore();
 
             ctx.restore();
-        }
-
-        // ============================================================
-        //  roundRect polyfill
-        // ============================================================
-        if (!CanvasRenderingContext2D.prototype.roundRect) {
-            CanvasRenderingContext2D.prototype.roundRect = function(x, y, w, h, r) {
-                if (r > w / 2) r = w / 2;
-                if (r > h / 2) r = h / 2;
-                this.moveTo(x + r, y);
-                this.arcTo(x + w, y, x + w, y + h, r);
-                this.arcTo(x + w, y + h, x, y + h, r);
-                this.arcTo(x, y + h, x, y, r);
-                this.arcTo(x, y, x + w, y, r);
-                return this;
-            };
-        }
-
-        // ============================================================
-        //  CONTROLE GAMEPAD USB (XTRAP)
-        // ============================================================
-        const gamepadData = {
-            connected: false,
-            active: false,
-            axes: { leftX: 0, leftY: 0, rightX: 0, rightY: 0 },
-            buttons: {
-                a: false,
-                b: false,
-                x: false,
-                y: false,
-                lb: false,
-                rb: false,
-                lt: false,
-                rt: false,
-                back: false,
-                start: false,
-                dpadUp: false,
-                dpadDown: false,
-                dpadLeft: false,
-                dpadRight: false,
-                leftStick: false,
-                rightStick: false
-            }
-        };
-
-        let gamepadIndex = -1;
-        let gamepadStatusEl = document.getElementById('gamepad-status');
-        let gamepadTextEl = document.getElementById('gamepadText');
-
-        function updateGamepadStatus(connected) {
-            if (connected) {
-                gamepadStatusEl.style.display = 'block';
-                gamepadTextEl.innerHTML = '🎮 XTRAP <span class="connected">CONECTADO</span>';
-            } else {
-                gamepadStatusEl.style.display = 'block';
-                gamepadTextEl.innerHTML = '🎮 XTRAP <span class="disconnected">DESCONECTADO</span>';
-            }
-        }
-
-        function scanGamepads() {
-            const gamepads = navigator.getGamepads ? navigator.getGamepads() : [];
-            for (let i = 0; i < gamepads.length; i++) {
-                const gp = gamepads[i];
-                if (gp && gp.connected) {
-                    gamepadIndex = i;
-                    gamepadData.connected = true;
-                    gamepadData.active = true;
-                    updateGamepadStatus(true);
-                    return gp;
-                }
-            }
-            if (gamepadData.connected) {
-                gamepadData.connected = false;
-                gamepadData.active = false;
-                gamepadIndex = -1;
-                updateGamepadStatus(false);
-            }
-            return null;
-        }
-
-        function readGamepad() {
-            if (gamepadIndex === -1) {
-                scanGamepads();
-                return;
-            }
-            const gp = navigator.getGamepads()[gamepadIndex];
-            if (!gp || !gp.connected) {
-                gamepadData.connected = false;
-                gamepadData.active = false;
-                gamepadIndex = -1;
-                updateGamepadStatus(false);
-                return;
-            }
-            gamepadData.active = true;
-            gamepadData.axes.leftX = gp.axes[0] || 0;
-            gamepadData.axes.leftY = gp.axes[1] || 0;
-            const b = gp.buttons;
-            gamepadData.buttons.a = b[0] ? b[0].pressed : false;
-            gamepadData.buttons.b = b[1] ? b[1].pressed : false;
-            gamepadData.buttons.x = b[2] ? b[2].pressed : false;
-            gamepadData.buttons.y = b[3] ? b[3].pressed : false;
-            gamepadData.buttons.lb = b[4] ? b[4].pressed : false;
-            gamepadData.buttons.rb = b[5] ? b[5].pressed : false;
-            gamepadData.buttons.lt = b[6] ? b[6].value > 0.15 : false;
-            gamepadData.buttons.rt = b[7] ? b[7].value > 0.15 : false;
-            gamepadData.buttons.back = b[8] ? b[8].pressed : false;
-            gamepadData.buttons.start = b[9] ? b[9].pressed : false;
-            gamepadData.buttons.dpadUp = b[12] ? b[12].pressed : false;
-            gamepadData.buttons.dpadDown = b[13] ? b[13].pressed : false;
-            gamepadData.buttons.dpadLeft = b[14] ? b[14].pressed : false;
-            gamepadData.buttons.dpadRight = b[15] ? b[15].pressed : false;
-            gamepadData.buttons.leftStick = b[10] ? b[10].pressed : false;
-            gamepadData.buttons.rightStick = b[11] ? b[11].pressed : false;
-        }
-
-        function processGamepadInputs() {
-            if (!gamepadData.active) return;
-            const b = gamepadData.buttons;
-
-            if (b.a || b.dpadUp) {
-                if (player.onGround && player.isAlive) {
-                    player.vy = CONFIG.jumpForce;
-                    player.onGround = false;
-                }
-            }
-            if (b.b || b.rt) { shoot(); }
-            if (b.x || b.lt) { usePower(); }
-            if (b.y) { fireMissile(); }
-            if (b.lb) {
-                createParticle(player.x + player.w / 2, player.y + player.h / 2, '#00ccff', 20);
-                showMessage('💨 Dash!');
-            }
-            if (b.rb) {
-                if (player.shieldCharges > 0) {
-                    player.shieldCharges--;
-                    createParticle(player.x + player.w / 2, player.y + player.h / 2, '#00ff88', 20);
-                    showMessage('🛡️ Escudo ativado!');
-                } else {
-                    showMessage('❌ Sem escudo!');
-                }
-            }
-            if (b.back || b.dpadLeft) {
-                if (player.health < player.maxHealth) {
-                    player.health = Math.min(player.maxHealth, player.health + 20);
-                    createParticle(player.x + player.w / 2, player.y + player.h / 2, '#ff6b6b', 15);
-                    updateHUD();
-                    showMessage('❤️ +20 de vida!');
-                } else {
-                    showMessage('❤️ Vida cheia!');
-                }
-            }
-            if (b.start || b.dpadRight) { usePower(); }
-            if (b.rightStick) { fireMissile(); }
-        }
-
-        function initGamepad() {
-            if (!navigator.getGamepads) {
-                gamepadStatusEl.style.display = 'none';
-                return;
-            }
-            setTimeout(() => {
-                const gp = scanGamepads();
-                if (gp) updateGamepadStatus(true);
-                else updateGamepadStatus(false);
-            }, 500);
-            window.addEventListener('gamepadconnected', (e) => {
-                gamepadIndex = e.gamepad.index;
-                gamepadData.connected = true;
-                gamepadData.active = true;
-                updateGamepadStatus(true);
-                showMessage('🎮 XTRAP Conectado!');
-            });
-            window.addEventListener('gamepaddisconnected', (e) => {
-                if (gamepadIndex === e.gamepad.index) {
-                    gamepadData.connected = false;
-                    gamepadData.active = false;
-                    gamepadIndex = -1;
-                    updateGamepadStatus(false);
-                    showMessage('🎮 XTRAP Desconectado');
-                }
-            });
         }
 
         // ============================================================
@@ -3357,7 +2159,7 @@
         });
 
         // ============================================================
-        //  CONTROLE MOBILE (TOUCH XTRAP)
+        //  CONTROLE MOBILE
         // ============================================================
         const joyData = { x: 0, y: 0, active: false };
         const joypadContainer = document.getElementById('joypadContainer');
@@ -3372,7 +2174,7 @@
             setTimeout(() => el.remove(), 600);
         }
 
-        function handleAnalogStart(e) {
+        function handleJoyStart(e) {
             e.preventDefault();
             const touch = e.touches ? e.touches[0] : e;
             const rect = joypadContainer.getBoundingClientRect();
@@ -3390,7 +2192,7 @@
             createTouchFeedback(touch.clientX, touch.clientY);
         }
 
-        function handleAnalogMove(e) {
+        function handleJoyMove(e) {
             e.preventDefault();
             if (!joyData.active) return;
             const touch = e.touches ? e.touches[0] : e;
@@ -3406,7 +2208,7 @@
             joypadKnob.style.transform = `translate(${-50 + joyData.x * 40}%, ${-50 + joyData.y * 40}%)`;
         }
 
-        function handleAnalogEnd(e) {
+        function handleJoyEnd(e) {
             e.preventDefault();
             joyData.x = 0;
             joyData.y = 0;
@@ -3415,27 +2217,27 @@
             joypadKnob.style.transform = 'translate(-50%, -50%)';
         }
 
-        joypadContainer.addEventListener('touchstart', handleAnalogStart, { passive: false });
-        joypadContainer.addEventListener('touchmove', handleAnalogMove, { passive: false });
-        joypadContainer.addEventListener('touchend', handleAnalogEnd, { passive: false });
-        joypadContainer.addEventListener('touchcancel', handleAnalogEnd, { passive: false });
+        joypadContainer.addEventListener('touchstart', handleJoyStart, { passive: false });
+        joypadContainer.addEventListener('touchmove', handleJoyMove, { passive: false });
+        joypadContainer.addEventListener('touchend', handleJoyEnd, { passive: false });
+        joypadContainer.addEventListener('touchcancel', handleJoyEnd, { passive: false });
 
-        let mouseOnAnalog = false;
+        let mouseOnJoy = false;
         joypadContainer.addEventListener('mousedown', (e) => {
-            mouseOnAnalog = true;
-            handleAnalogStart(e);
+            mouseOnJoy = true;
+            handleJoyStart(e);
         });
         document.addEventListener('mousemove', (e) => {
-            if (mouseOnAnalog) handleAnalogMove(e);
+            if (mouseOnJoy) handleJoyMove(e);
         });
         document.addEventListener('mouseup', () => {
-            if (mouseOnAnalog) {
-                mouseOnAnalog = false;
-                handleAnalogEnd(e);
+            if (mouseOnJoy) {
+                mouseOnJoy = false;
+                handleJoyEnd(e);
             }
         });
 
-        function setupXtrapButton(btnId, action) {
+        function setupButton(btnId, action) {
             const btn = document.getElementById(btnId);
             if (!btn) return;
             btn.addEventListener('touchstart', (e) => {
@@ -3458,30 +2260,30 @@
             btn.addEventListener('contextmenu', (e) => e.preventDefault());
         }
 
-        setupXtrapButton('btnShoot', shoot);
-        setupXtrapButton('btnA', () => {
+        setupButton('btnShoot', shoot);
+        setupButton('btnA', () => {
             if (player.onGround && player.isAlive) {
                 player.vy = CONFIG.jumpForce;
                 player.onGround = false;
             }
         });
-        setupXtrapButton('btnB', shoot);
-        setupXtrapButton('btnX', usePower);
-        setupXtrapButton('btnY', fireMissile);
-        setupXtrapButton('btnL1', () => {
+        setupButton('btnB', shoot);
+        setupButton('btnX', usePower);
+        setupButton('btnY', fireMissile);
+        setupButton('btnL1', () => {
             createParticle(player.x + player.w / 2, player.y + player.h / 2, '#00ccff', 20);
             showMessage('💨 Dash!');
         });
-        setupXtrapButton('btnR1', () => {
+        setupButton('btnR1', () => {
             if (player.shieldCharges > 0) {
                 player.shieldCharges--;
                 createParticle(player.x + player.w / 2, player.y + player.h / 2, '#00ff88', 20);
-                showMessage('🛡️ Escudo ativado!');
+                showMessage('🛡️ Escudo!');
             } else {
                 showMessage('❌ Sem escudo!');
             }
         });
-        setupXtrapButton('btnL2', () => {
+        setupButton('btnL2', () => {
             if (player.health < player.maxHealth) {
                 player.health = Math.min(player.maxHealth, player.health + 20);
                 createParticle(player.x + player.w / 2, player.y + player.h / 2, '#ff6b6b', 15);
@@ -3491,8 +2293,8 @@
                 showMessage('❤️ Vida cheia!');
             }
         });
-        setupXtrapButton('btnR2', usePower);
-        setupXtrapButton('btnSelect', () => {
+        setupButton('btnR2', usePower);
+        setupButton('btnSelect', () => {
             if (player.health < player.maxHealth) {
                 player.health = Math.min(player.maxHealth, player.health + 20);
                 createParticle(player.x + player.w / 2, player.y + player.h / 2, '#ff6b6b', 15);
@@ -3502,22 +2304,102 @@
                 showMessage('❤️ Vida cheia!');
             }
         });
-        setupXtrapButton('btnStart', usePower);
-        setupXtrapButton('btnMode', fireMissile);
+        setupButton('btnStart', usePower);
+        setupButton('btnMode', fireMissile);
 
         canvas.addEventListener('click', () => shoot());
         canvas.addEventListener('contextmenu', (e) => e.preventDefault());
 
         // ============================================================
+        //  GAMEPAD USB
+        // ============================================================
+        let gamepadActive = false;
+        let gpIndex = -1;
+        const gpStatus = document.getElementById('gamepad-status');
+
+        function updateGPStatus(connected) {
+            if (connected) {
+                gpStatus.style.display = 'block';
+                gpStatus.innerHTML = '🎮 <span class="connected">XTRAP CONECTADO</span>';
+            } else {
+                gpStatus.style.display = 'block';
+                gpStatus.innerHTML = '🎮 <span class="disconnected">NENHUM CONTROLE</span>';
+            }
+        }
+
+        function scanGP() {
+            const gps = navigator.getGamepads ? navigator.getGamepads() : [];
+            for (let i = 0; i < gps.length; i++) {
+                if (gps[i] && gps[i].connected) {
+                    gpIndex = i;
+                    gamepadActive = true;
+                    updateGPStatus(true);
+                    return;
+                }
+            }
+            if (gamepadActive) {
+                gamepadActive = false;
+                gpIndex = -1;
+                updateGPStatus(false);
+            }
+        }
+
+        function readGP() {
+            if (gpIndex === -1) { scanGP(); return; }
+            const gp = navigator.getGamepads()[gpIndex];
+            if (!gp || !gp.connected) {
+                gamepadActive = false;
+                gpIndex = -1;
+                updateGPStatus(false);
+                return;
+            }
+            gamepadActive = true;
+            const b = gp.buttons;
+            if (b[0] && b[0].pressed) {
+                if (player.onGround && player.isAlive) {
+                    player.vy = CONFIG.jumpForce;
+                    player.onGround = false;
+                }
+            }
+            if (b[1] && b[1].pressed) { shoot(); }
+            if (b[2] && b[2].pressed) { usePower(); }
+            if (b[3] && b[3].pressed) { fireMissile(); }
+            if (b[4] && b[4].pressed) {
+                createParticle(player.x + player.w / 2, player.y + player.h / 2, '#00ccff', 20);
+                showMessage('💨 Dash!');
+            }
+            if (b[5] && b[5].pressed) {
+                if (player.shieldCharges > 0) {
+                    player.shieldCharges--;
+                    createParticle(player.x + player.w / 2, player.y + player.h / 2, '#00ff88', 20);
+                    showMessage('🛡️ Escudo!');
+                } else {
+                    showMessage('❌ Sem escudo!');
+                }
+            }
+        }
+
+        function initGP() {
+            if (!navigator.getGamepads) { gpStatus.style.display = 'none'; return; }
+            setTimeout(() => { scanGP();
+                updateGPStatus(gamepadActive); }, 500);
+            window.addEventListener('gamepadconnected', () => { scanGP();
+                showMessage('🎮 XTRAP Conectado!'); });
+            window.addEventListener('gamepaddisconnected', () => { gamepadActive = false;
+                gpIndex = -1;
+                updateGPStatus(false);
+                showMessage('🎮 XTRAP Desconectado'); });
+        }
+
+        // ============================================================
         //  LOOP PRINCIPAL
         // ============================================================
-        let gameLoopStarted = false;
+        let loopStarted = false;
 
         function gameLoop() {
-            if (!gameLoopStarted) { requestAnimationFrame(gameLoop); return; }
+            if (!loopStarted) { requestAnimationFrame(gameLoop); return; }
 
-            readGamepad();
-            processGamepadInputs();
+            readGP();
 
             if (player.shootCooldown > 0) player.shootCooldown -= 1 / 60;
             if (player.missileCooldown > 0) {
@@ -3541,9 +2423,7 @@
                 p.y += p.vy;
                 p.vy += 0.1;
                 p.life--;
-                if (p.life <= 0) {
-                    particles.splice(i, 1);
-                }
+                if (p.life <= 0) particles.splice(i, 1);
             }
 
             render();
@@ -3561,19 +2441,15 @@
             createPhase(player.phase);
             updateHUD();
             renderRanking();
-            initGamepad();
-            gameLoopStarted = true;
+            initGP();
+            loopStarted = true;
             gameLoop();
             console.log(`🧟 Bem-vindo, ${playerData.name}! Fase ${player.phase}`);
         }
 
-        // Renderiza o ranking ao carregar a página
         renderRanking();
-
         console.log('🧟 PITFALL 2D - The Infected Expedition!');
-        console.log('🏆 Ranking de jogadores disponível!');
-        console.log('🎮 Controle XTRAP adaptado!');
-        console.log('📱 A=Pulo, B=Tiro, X=Poder, Y=Míssil');
+        console.log('🎮 Controles: WASD, ESPAÇO, E, X');
     </script>
 </body>
 </html>
